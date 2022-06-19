@@ -9,7 +9,7 @@ const Reviewer = [
   },
   {
     url: "/find-projects",
-    text: "FInd Projects",
+    text: "Find Projects",
   },
   {
     url: "#",
