@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:5000",
+  baseURL: "https://conssols.herokuapp.com" || "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {
