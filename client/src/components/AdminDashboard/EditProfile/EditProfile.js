@@ -428,7 +428,7 @@ const EditProfile = () => {
                   endIcon={<SaveIcon />}
                   loadingPosition="end"
                 >
-                  Sace Changes
+                  Save Changes
                 </LoadingButton>
               </Box>
             </Box>

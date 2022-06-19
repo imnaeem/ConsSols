@@ -41,17 +41,25 @@ const FindProjects = () => {
 
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("profile"))) {
-      dispatch(
-        checkCompanyProfile(
-          JSON.parse(localStorage.getItem("profile")).result._id
-        )
-      ).then(() => {
+      if (
+        JSON.parse(localStorage.getItem("profile")).result.type === "company"
+      ) {
         dispatch(
-          getProjectsForCompany(
+          checkCompanyProfile(
             JSON.parse(localStorage.getItem("profile")).result._id
           )
-        );
-      });
+        ).then(() => {
+          dispatch(
+            getProjectsForCompany(
+              JSON.parse(localStorage.getItem("profile")).result._id
+            )
+          );
+        });
+      } else if (
+        JSON.parse(localStorage.getItem("profile")).result.type === "admin"
+      ) {
+        dispatch(getAllProject());
+      }
     } else dispatch(getAllProject());
 
     if (perPageProjects.length === 0) {

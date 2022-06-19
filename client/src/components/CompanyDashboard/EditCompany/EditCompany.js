@@ -785,7 +785,7 @@ const EditCompany = () => {
                             endIcon={<SaveIcon />}
                             loadingPosition="end"
                           >
-                            Sace Changes
+                            Save Changes
                           </LoadingButton>
                         </Box>
                       </FormikProvider>
