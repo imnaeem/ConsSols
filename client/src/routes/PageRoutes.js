@@ -56,7 +56,7 @@ const PageRoutes = () => {
       <Route path="/page-not-found" element={<PageNotFound />} />
 
       <Route
-        path="/find-companiess"
+        path="/find-companies"
         element={
           <CompaniesProjects page="companies" loggedIn={user}>
             <Companies />
