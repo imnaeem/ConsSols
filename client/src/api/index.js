@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://conssols.herokuapp.com",
+  baseURL: "https://conssols.herokuapp.com/api",
 });
 
 API.interceptors.request.use((req) => {
@@ -124,7 +124,7 @@ export const getCompanyReviews = (id) =>
     },
   });
 
-export const getAllCompanies = () => API.get("/find-companiess");
+export const getAllCompanies = () => API.get("/find-companies");
 
 export const getCurrentCompany = (username) =>
   API.get(`/company-profile/${username}`, {
