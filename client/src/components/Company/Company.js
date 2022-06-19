@@ -10,6 +10,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentCompany } from "../../actions/companies";
 import { currentCompanyReviews } from "./../../actions/companies";
+import { Helmet } from "react-helmet";
 
 const Company = () => {
   let { id } = useParams();
@@ -41,6 +42,9 @@ const Company = () => {
     >
       {checkCompany.fetched && clientReviews.fetched ? (
         <Box sx={{}}>
+          <Helmet>
+            <title>{company[0].companyName}</title>
+          </Helmet>
           <Stack
             direction="row"
             justifyContent="space-around"
