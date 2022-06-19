@@ -100,7 +100,47 @@ const FindProjects = () => {
             padding: "20px",
           }}
         >
-          {JSON.parse(localStorage.getItem("profile")) ? (
+          {JSON.parse(localStorage.getItem("profile")) &&
+            JSON.parse(localStorage.getItem("profile")).result.type ===
+              "admin" && (
+              <Box>
+                {allProjects.fetched ? (
+                  <Box>
+                    {projects.length > 0 ? (
+                      <Stack direction="column" spacing={3}>
+                        {perPageProjects.map((project, index) => (
+                          <LazyLoad key={index} height={300}>
+                            <Projects project={project} />
+                          </LazyLoad>
+                        ))}
+                        <Stack direction="row" justifyContent="center">
+                          <Pagination
+                            count={count}
+                            size="large"
+                            page={page}
+                            variant="outlined"
+                            shape="rounded"
+                            onChange={handleChange}
+                          />
+                        </Stack>
+                      </Stack>
+                    ) : (
+                      <Box sx={{ padding: "10px 10px", textAlign: "center" }}>
+                        <Typography>No Projects Found</Typography>
+                      </Box>
+                    )}
+                  </Box>
+                ) : (
+                  <Box sx={{ padding: "10px 10px" }}>
+                    <LinearProgress />
+                  </Box>
+                )}
+              </Box>
+            )}
+
+          {JSON.parse(localStorage.getItem("profile")) &&
+          JSON.parse(localStorage.getItem("profile")).result.type ===
+            "company" ? (
             <Box>
               {company.fetched ? (
                 <Box>
