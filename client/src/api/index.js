@@ -124,7 +124,7 @@ export const getCompanyReviews = (id) =>
     },
   });
 
-export const getAllCompanies = () => API.get("/find-companies");
+export const getAllCompanies = () => API.get("/api/find-companies");
 
 export const getCurrentCompany = (username) =>
   API.get(`/company-profile/${username}`, {
