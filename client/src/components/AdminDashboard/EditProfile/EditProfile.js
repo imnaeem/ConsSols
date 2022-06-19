@@ -115,7 +115,7 @@ const EditProfile = () => {
               const user = JSON.parse(localStorage.getItem("profile"));
               user.result["userImage"] = values.userImage;
               localStorage.setItem("profile", JSON.stringify(user));
-              navigate("/client/profile");
+              navigate("/admin/profile");
               setresponse({
                 type: "success",
                 response: "Profile Updated Successfully!",

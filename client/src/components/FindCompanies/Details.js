@@ -22,18 +22,17 @@ const Details = () => {
           Top Drupal Development Companies
         </Typography>
         <Typography>
-          Are you looking for top Drupal development companies? Here is the list
-          of top Drupal developers that provides excellent Drupal development
-          services to clients. Drupal is a powerful CMS widely used to develop
-          variety of web solutions; ranging from a single page website to
-          complex eCommerce stores. There are large numbers of web development
-          companies in tech world that claim to provide excellent Drupal
-          development services. To help Drupal service seekers cut through the
-          clutter and find the best Drupal web partner, GoodFirms have listed
-          top Drupal development companies. These top performers are vouched in
-          web industry for delivering robust and innovative Drupal development
-          solutions. Find and hire the best Drupal developer from the below
-          list:
+          Are you looking for top Construction Companies? Here is the list to
+          find your company according to your needs that provides excellent
+          construction services to clients. ConSols is the best of all platforms
+          that provide verity of companies to develop your projects ranging from
+          single house to larger farm houses. There are large numbers of
+          builders that claim to provide excellent construction services. To
+          help these service seekers cut through the clutter and find the best
+          company, ConsSols have listed top construction companies. These top
+          performers are verified through our verification process real and
+          authorized companies having good repute in the market. Find and hire
+          the best builder from the below list:
         </Typography>
       </Box>
       <Divider orientation="horizontal" flexItem />

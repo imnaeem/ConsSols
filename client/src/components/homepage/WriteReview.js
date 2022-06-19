@@ -46,7 +46,7 @@ const WriteReview = () => {
               lineHeight: "60px",
             }}
           >
-            GoodFirms Ratings & Reviews you can rely on
+            ConSols verified reviews and ratings you can rely on.
           </Typography>
           <Typography
             sx={{
@@ -55,8 +55,9 @@ const WriteReview = () => {
               lineHeight: "40px",
             }}
           >
-            Manually filtered 40000+ unbiased reviews from real customers to
-            help you make quick, smart business decisions.
+            Manually filtered projects according to the business needs and
+            market demands to help you make quick, smart decisions about
+            projects.
           </Typography>
           <Button
             component={Link}
