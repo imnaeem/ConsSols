@@ -126,6 +126,8 @@ const PageRoutes = () => {
           </ProtectedRoutes>
         }
       />
+
+      <Route component={<PageNotFound />} />
     </Routes>
   );
 };

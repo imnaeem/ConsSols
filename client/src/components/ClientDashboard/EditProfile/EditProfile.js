@@ -216,7 +216,7 @@ const EditProfile = () => {
                     fontWeight: "bold",
                   }}
                 >
-                  Muhammad Naeem
+                  {values.firstName + " " + values.lastName}
                 </Typography>
                 <Typography
                   sx={{

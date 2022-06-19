@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Divider, Paper, Stack, Typography, Rating } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import styled from "@emotion/styled";
+import loadingImage from "../../images/loading-image.png";
 
 const Details = ({ company }) => {
   const {
@@ -15,6 +14,7 @@ const Details = ({ company }) => {
     reviews,
     services,
     username,
+    companyImage,
   } = company;
 
   let ratingsAvg = 0;
@@ -45,7 +45,7 @@ const Details = ({ company }) => {
         >
           <Box
             component="img"
-            src="https://goodfirms-prod.s3.amazonaws.com/software/general/kenz.png"
+            src={companyImage === "" ? loadingImage : companyImage}
             sx={{
               maxHeight: "85px",
               maxWidth: "85px",

@@ -21,9 +21,8 @@ const Company = () => {
 
   useEffect(() => {
     dispatch(getCurrentCompany(id));
-    if (JSON.parse(localStorage.getItem("profile"))) {
-      dispatch(currentCompanyReviews(id));
-    }
+
+    dispatch(currentCompanyReviews(id));
   }, [dispatch, location, id]);
 
   const checkCompany = useSelector((state) => state.checkCompanyProfile);

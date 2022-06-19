@@ -83,7 +83,7 @@ const Dashboard = () => {
                     color: "#181818",
                   }}
                 >
-                  Welcome, Muhammad
+                  Welcome to Your Profile!
                 </Typography>
                 <Typography
                   sx={{
