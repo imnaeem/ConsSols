@@ -53,8 +53,7 @@ const Banner = () => {
                 },
               }}
             >
-              Conssols is helping millions of clients to find best company for
-              their projects.
+              Purely customer-rated construction service providers.
             </Typography>
             <Button
               component={Link}
@@ -143,8 +142,8 @@ const Banner = () => {
             }}
             color="text.secondary"
           >
-            GoodFirms is helping millions of B2B tech companies find & promote
-            software products & services
+            ConsSols is helping millions of clients to find best company for
+            their projects and constructions.
           </Typography>
           <Box
             sx={

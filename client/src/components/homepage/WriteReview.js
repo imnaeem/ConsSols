@@ -23,7 +23,7 @@ const WriteReview = () => {
             fontWeight: "500",
           }}
         >
-          Purely Customer-rated Service and Software providers
+          Purely Customer-rated Services and Companies providers
         </Typography>
         <Typography
           sx={{
@@ -46,7 +46,7 @@ const WriteReview = () => {
               lineHeight: "60px",
             }}
           >
-            ConSols verified reviews and ratings you can rely on.
+            Conssols verified reviews and ratings you can rely on.
           </Typography>
           <Typography
             sx={{

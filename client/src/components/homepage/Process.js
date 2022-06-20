@@ -23,7 +23,7 @@ const Process = () => {
             fontWeight: "500",
           }}
         >
-          Purely Customer-rated Service and Software providers
+          Purely Customer-rated Services and Companies providers
         </Typography>
         <Typography
           sx={{
@@ -53,7 +53,7 @@ const Process = () => {
               lineHeight: "60px",
             }}
           >
-            GoodFirms Ratings & Reviews you can rely on
+            Conssols Ratings & Reviews you can rely on
           </Typography>
           <Typography
             sx={{
