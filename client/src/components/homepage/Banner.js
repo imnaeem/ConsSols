@@ -53,7 +53,8 @@ const Banner = () => {
                 },
               }}
             >
-              Reviews and Ratings of Top Service Companies & Software Products
+              Conssols is helping millions of clients to find best company for
+              their projects.
             </Typography>
             <Button
               component={Link}

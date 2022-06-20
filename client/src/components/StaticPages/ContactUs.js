@@ -95,7 +95,7 @@ const ContactUs = () => {
             marginBottom: "10px",
           }}
         >
-          Register with GoodFirms account
+          Register with Conssols account
         </Typography>
         <Stack
           alignItems="center"
@@ -115,14 +115,18 @@ const ContactUs = () => {
                 fontWeight: "700",
               }}
             >
-              Get Started on GoodFirms:
+              Get Started on Conssols:
             </Typography>
             <Typography sx={{ padding: "10px 0px" }}>
-              For any business, conversion is everything. In the cutthroat
-              world, to increase conversion it is of paramount importance for
-              any business to have a good online reputation. GoodFirms provides
-              IT companies & software vendors a platform to manage and improve
-              their online credibility and reputation.
+              For any business, conversion is everything. In this tech world, to
+              increase conversion it is of paramount importance for any
+              company/business to have a good online reputation. ConsSols
+              provides companies & construction service seekers a platform to
+              manage and improve their online credibility and reputation. Add
+              your company to ConsSols to boost reputation which in turn will
+              increase online exposure, gain online attention and grab more
+              audience! Take the actionable profit-driven first step by filling
+              the form given here.
             </Typography>
             <Typography sx={{ padding: "10px 0px" }}>
               Add your business to GoodFirms to boost reputation which in turn

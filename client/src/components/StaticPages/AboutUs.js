@@ -30,12 +30,23 @@ const AboutUs = () => {
             About Us
           </Typography>
           <Typography>
-            GoodFirms is a full-fledged research and review platform that helps
-            software buyers and service seekers to opt for the best software or
-            firm. At the same time, it helps IT companies and software vendors
-            to boost user acquisition stats, market share and brand awareness.
-            GoodFirms, just as the name suggests, is a dedicated community of
-            “performing” IT companies as well as software solutions.
+            Conssols is the best platfrom that helps customers to find the best
+            construction company related to their projects . Simultaneously, it
+            facilitate construction companies to find projects rapidly.This
+            website can help both construction companies to meet on a single
+            platfrom for their projcts.
+          </Typography>
+          <Typography>
+            conssols is growing with each day in terms of listing categories of
+            6000+ construction companies, 4000+ verified reviews, 600+ validated
+            surveys and research led to the most recent business patterns. We
+            have our own research process to calculate the merit of a company or
+            software on the basis of quality, reliability, and ability. This
+            makes us a treasury of the globe’s most prominent, efficient, and
+            well-performing construction service platform. On the other hand,
+            with conssols sited as a reliable source for customers, we have now
+            become a solid platform for companies and customers to showcase
+            their work & results among the global prospects.
           </Typography>
           <Typography>
             We are well aware of the scenarios at both ends, wherein service
@@ -43,32 +54,7 @@ const AboutUs = () => {
             need and how leading software firms are making efforts to stand out
             from a clusters of inferior competitors.
           </Typography>
-          <Typography>
-            We are well aware of the scenarios at both ends, wherein service
-            seekers are struggling to find the best companies to meet a specific
-            need and how leading software firms are making efforts to stand out
-            from a clusters of inferior competitors.
-          </Typography>
-          <Typography
-            sx={{
-              fontWeight: "bold",
-            }}
-            variant="h5"
-          >
-            About Us
-          </Typography>
-          <Typography>
-            We are well aware of the scenarios at both ends, wherein service
-            seekers are struggling to find the best companies to meet a specific
-            need and how leading software firms are making efforts to stand out
-            from a clusters of inferior competitors.
-          </Typography>
-          <Typography>
-            We are well aware of the scenarios at both ends, wherein service
-            seekers are struggling to find the best companies to meet a specific
-            need and how leading software firms are making efforts to stand out
-            from a clusters of inferior competitors.
-          </Typography>
+
           <Typography
             sx={{
               fontWeight: "bold",

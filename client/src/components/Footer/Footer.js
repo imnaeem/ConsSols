@@ -78,7 +78,7 @@ const Footer = () => {
             textAlign: "center",
           }}
         >
-          Copyright © GoodFirms 2022
+          Copyright © ConsSols 2022
         </Typography>
       </Box>
     </Box>
