@@ -3,6 +3,8 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { Link } from "react-router-dom";
 
+import CompaniesImage from "../../images/companies.gif";
+
 const WriteReview = () => {
   return (
     <Box
@@ -89,7 +91,7 @@ const WriteReview = () => {
             }
           }
           alt="The house from the offer."
-          src="https://assets.goodfirms.co/images/write-a-review-home.gif"
+          src={CompaniesImage}
         ></Box>
       </Stack>
     </Box>

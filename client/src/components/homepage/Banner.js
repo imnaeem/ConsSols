@@ -7,6 +7,7 @@ import { theme } from "./../../theme";
 import CounterData from "./CounterData";
 import Counter from "./Counter";
 import { Link } from "react-router-dom";
+import HomepageGirl from "../../images/homepage-girl.png";
 
 const Banner = () => {
   return (
@@ -109,8 +110,8 @@ const Banner = () => {
                   // maxHeight: { xs: 233, md: 167 },
                   // maxWidth: { xs: 350, md: 250 },
                 }}
-                alt="The house from the offer."
-                src="https://assets.goodfirms.co/images/hero-girl.png"
+                alt="Home Page"
+                src={HomepageGirl}
               />
             </Box>
           </Box>

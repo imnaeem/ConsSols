@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Stack, Typography, Button } from "@mui/material";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 import { Link } from "react-router-dom";
+import ProjectsImage from "../../images/projects.gif";
 
 const Process = () => {
   return (
@@ -42,7 +43,7 @@ const Process = () => {
             component="img"
             sx={{}}
             alt="The house from the offer."
-            src="https://assets.goodfirms.co/images/research-business-decisions-animation-gif-home.gif"
+            src={ProjectsImage}
           ></Box>
         </Stack>
         <Stack flex={1} direction="column" spacing={3} justifyContent="center">
