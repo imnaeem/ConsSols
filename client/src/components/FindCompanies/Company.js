@@ -98,7 +98,7 @@ const Company = ({ company }) => {
             </Box>
           )}
 
-          <Stack>
+          <Stack direction="row">
             <Stack direction="column" flex={5}>
               <Stack direction="row" spacing={2} alignItems="center">
                 <Box
