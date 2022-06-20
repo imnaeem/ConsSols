@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import Details from "./../FindCompanies/Details";
+import Details from "./Detials";
 
 import {
   Box,
