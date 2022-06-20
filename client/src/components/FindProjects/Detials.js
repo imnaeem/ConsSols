@@ -18,7 +18,7 @@ function Detials() {
             color: "#333",
           }}
         >
-          Find COnstruction and Architect Projects
+          Find Construction and Architect Projects
         </Typography>
         <Typography>
           Are you looking for construction projects? Here is the list of

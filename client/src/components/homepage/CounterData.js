@@ -5,15 +5,15 @@ const CounterData = [
   },
   {
     count: "110000+",
-    des: "Companies & Software",
+    des: "Companies",
   },
   {
     count: "2000+",
-    des: "Research & Surveys",
+    des: "Clients Registered",
   },
   {
     count: "1000+",
-    des: "eBooks & Whitepapers",
+    des: "Promoted Company",
   },
 ];
 

@@ -128,12 +128,7 @@ const ContactUs = () => {
               audience! Take the actionable profit-driven first step by filling
               the form given here.
             </Typography>
-            <Typography sx={{ padding: "10px 0px" }}>
-              Add your business to GoodFirms to boost reputation which in turn
-              will increase online exposure, drive traffic and explode revenues!
-              Take the actionable profit-driven first step by filling the form
-              given here.
-            </Typography>
+
             <Box
               component="img"
               sx={{
