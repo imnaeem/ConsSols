@@ -267,7 +267,7 @@ const Header = () => {
               component={Link}
               to="/about-us"
             >
-              Why CMS
+              Why ConsSols
             </ListItemButton>
           </Stack>
         </Box>
