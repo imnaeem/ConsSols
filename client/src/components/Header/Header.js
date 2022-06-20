@@ -299,8 +299,10 @@ const Header = () => {
                   <Avatar
                     alt="user image"
                     src={
-                      JSON.parse(localStorage.getItem("profile")).result
-                        .userImage
+                      JSON.parse(localStorage.getItem("profile"))
+                        ? JSON.parse(localStorage.getItem("profile")).result
+                            .userImage
+                        : ""
                     }
                   >
                     {user.result.firstName.charAt(0)}
