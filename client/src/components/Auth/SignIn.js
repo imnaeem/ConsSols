@@ -133,7 +133,7 @@ const SignIn = () => {
                   fontSize: "20px",
                 }}
               >
-                Sign in to GoodFirms
+                Sign in to ConSols
               </Typography>
               <Typography
                 sx={{
@@ -142,7 +142,7 @@ const SignIn = () => {
                 }}
               >
                 You can sign in using your registered email address with
-                GoodFirms.
+                ConsSols.
               </Typography>
               {error && (
                 <Grow in timeout={500}>
