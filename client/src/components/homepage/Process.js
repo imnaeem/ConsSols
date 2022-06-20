@@ -53,7 +53,7 @@ const Process = () => {
               lineHeight: "60px",
             }}
           >
-            Conssols Ratings & Reviews you can rely on
+            ConsSols Ratings & Reviews you can rely on
           </Typography>
           <Typography
             sx={{

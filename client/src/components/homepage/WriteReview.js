@@ -46,7 +46,7 @@ const WriteReview = () => {
               lineHeight: "60px",
             }}
           >
-            Conssols verified reviews and ratings you can rely on.
+            ConsSols verified reviews and ratings you can rely on.
           </Typography>
           <Typography
             sx={{
