@@ -25,19 +25,8 @@ const RightSidebar = () => {
           >
             <Box sx={{ display: "inline" }}>
               <Typography>
-                GoodFirms is a full-fledged research and review platform that
-                helps software buyers and service seekers to
-                <Box
-                  component="a"
-                  href="#"
-                  sx={{
-                    display: "inline",
-                    textDecoration: "none",
-                    marginLeft: "5px",
-                  }}
-                >
-                  read more...
-                </Box>
+                ConsSols is a full-fledged companies and review platform that
+                helps companies and clients seekers to get help with projects.
               </Typography>
             </Box>
           </Box>
