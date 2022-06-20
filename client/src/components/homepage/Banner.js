@@ -53,7 +53,7 @@ const Banner = () => {
                 },
               }}
             >
-              Purely customer-rated construction service providers.
+              Purely customer-rated construction service providers
             </Typography>
             <Button
               component={Link}
