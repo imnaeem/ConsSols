@@ -61,7 +61,7 @@ const CompanyFormValidation = yup.object().shape({
   founded: yup.string().required("Required"),
   employees: yup.string().required("Required"),
   rate: yup.string().required("Required"),
-  website: yup.string().url("Enter a valid URL").required("Required"),
+  website: yup.string().url("Enter a valid URL"),
   phone: yup
     .string()
     .matches(phoneRegExp, "Phone number is not valid")
