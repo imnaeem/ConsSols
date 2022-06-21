@@ -55,8 +55,6 @@ const Details = ({ company }) => {
         </Box>
         <Box>
           <Typography
-            component="a"
-            href="/#company"
             sx={{
               fontSize: "22px",
               color: "#333",
