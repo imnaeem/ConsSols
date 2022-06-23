@@ -103,28 +103,28 @@ const SignIn = () => {
   });
 
   return (
-    <Grow in>
-      <Box
-        sx={{
-          background: "#f5f5f5",
-        }}
+    <Box
+      sx={{
+        background: "#f5f5f5",
+      }}
+    >
+      <Helmet>
+        <title>Sign In</title>
+      </Helmet>
+      <Stack
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
       >
-        <Helmet>
-          <title>Sign In</title>
-        </Helmet>
         <Stack
-          spacing={0}
-          direction="column"
-          alignItems="center"
-          justifyContent="center"
+          xs={3}
+          sx={{
+            maxWidth: "516px",
+            margin: { xs: "30px", md: "60px" },
+          }}
         >
-          <Stack
-            xs={3}
-            sx={{
-              maxWidth: "516px",
-              margin: { xs: "30px", md: "60px" },
-            }}
-          >
+          <Grow in>
             <Paper elevation={2} sx={{ padding: "40px 50px" }}>
               <Typography
                 sx={{
@@ -249,10 +249,10 @@ const SignIn = () => {
                 </TextButton>
               </InlineText>
             </Paper>
-          </Stack>
+          </Grow>
         </Stack>
-      </Box>
-    </Grow>
+      </Stack>
+    </Box>
   );
 };
 
