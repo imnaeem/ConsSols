@@ -15,7 +15,6 @@ const Homepage = () => {
       </Helmet>
       <Banner />
       <WriteReview />
-
       <Process />
       <Contact />
     </Box>
