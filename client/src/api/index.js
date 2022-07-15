@@ -25,17 +25,16 @@ API.interceptors.request.use((req) => {
       const isExpired = userToken.exp * 2000 < Date.now();
       console.log(isExpired);
       if (!isExpired) {
-        req.headers.Authorization = `Bearer ${token}`;
-        return req;
-      }
-      const dispatch = useDispatch();
-      try {
-        dispatch({ type: "LOGOUT" });
-        window.location.replace("/user/signin");
-      } catch (e) {
-        console.log(e);
+        const dispatch = useDispatch();
+        try {
+          dispatch({ type: "LOGOUT" });
+          window.location.replace("/user/signin");
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
+    req.headers.Authorization = `Bearer ${token}`;
   }
   return req;
 });
