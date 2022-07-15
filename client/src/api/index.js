@@ -23,6 +23,7 @@ API.interceptors.request.use((req) => {
       const userToken = jwt_decode(token);
       console.log(userToken);
       const isExpired = userToken.exp * 2000 < Date.now();
+      console.log(isExpired);
       if (!isExpired) {
         req.headers.Authorization = `Bearer ${token}`;
         return req;
