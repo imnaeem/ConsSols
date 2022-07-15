@@ -20,7 +20,6 @@ API.interceptors.request.use((req) => {
     const token = JSON.parse(localStorage.getItem("profile")).token;
     if (token) {
       const userToken = jwt_decode(token);
-      console.log(userToken);
       const isExpired = userToken.exp * 1000 > Date.now();
       if (!isExpired) {
         try {
