@@ -22,19 +22,14 @@ API.interceptors.request.use((req) => {
       const userToken = jwt_decode(token);
       console.log(userToken);
       const isExpired = userToken.exp * 1000 > Date.now();
-      // console.log(userToken.exp * 1000);
-      // console.log(Date.now());
-      // console.log(userToken.exp * 1000 - Date.now());
-
-      // console.log(isExpired);
-      // if (!isExpired) {
-      //   try {
-      //     localStorage.clear();
-      //     window.location.replace("/user/signin");
-      //   } catch (e) {
-      //     console.log(e);
-      //   }
-      // }
+      if (!isExpired) {
+        try {
+          localStorage.clear();
+          window.location.replace("/user/signin");
+        } catch (e) {
+          console.log(e);
+        }
+      }
     }
     req.headers.Authorization = `Bearer ${token}`;
   }
