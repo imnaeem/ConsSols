@@ -5,16 +5,6 @@ const API = axios.create({
   baseURL: "https://conssols.herokuapp.com/api",
 });
 
-// API.interceptors.request.use((req) => {
-//   if (localStorage.getItem("profile")) {
-//     req.headers.Authorization = `Bearer ${
-//       JSON.parse(localStorage.getItem("profile")).token
-//     }`;
-//   }
-
-//   return req;
-// });
-
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
     const token = JSON.parse(localStorage.getItem("profile")).token;
@@ -22,12 +12,8 @@ API.interceptors.request.use((req) => {
       const userToken = jwt_decode(token);
       const isExpired = userToken.exp * 1000 > Date.now();
       if (!isExpired) {
-        try {
-          localStorage.clear();
-          window.location.replace("/user/signin");
-        } catch (e) {
-          console.log(e);
-        }
+        localStorage.clear();
+        window.location.replace("/user/signin");
       }
     }
     req.headers.Authorization = `Bearer ${token}`;
