@@ -30,7 +30,10 @@ const WriteReview = () => {
         <Typography
           sx={{
             fontSize: "22px",
-            padding: "5px 350px",
+            padding: {
+              xs: "10px 0px",
+              lg: "5px 350px",
+            },
             textAlign: "center",
           }}
         >
@@ -39,7 +42,13 @@ const WriteReview = () => {
         </Typography>
       </Stack>
 
-      <Stack direction="row" spacing={7}>
+      <Stack
+        direction={{
+          xs: "column",
+          lg: "row",
+        }}
+        spacing={7}
+      >
         <Stack flex={1} direction="column" spacing={3} justifyContent="center">
           <Typography
             sx={{

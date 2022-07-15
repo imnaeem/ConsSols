@@ -29,7 +29,10 @@ const Process = () => {
         <Typography
           sx={{
             fontSize: "22px",
-            padding: "5px 350px",
+            padding: {
+              xs: "10px 0px",
+              lg: "5px 350px",
+            },
             textAlign: "center",
           }}
         >
@@ -37,11 +40,16 @@ const Process = () => {
           make your best business decisions
         </Typography>
       </Stack>
-      <Stack direction="row" spacing={7}>
+      <Stack
+        direction={{
+          xs: "column",
+          lg: "row",
+        }}
+        spacing={7}
+      >
         <Stack flex={1}>
           <Box
             component="img"
-            sx={{}}
             alt="The house from the offer."
             src={ProjectsImage}
           ></Box>

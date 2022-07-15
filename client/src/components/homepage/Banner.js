@@ -48,6 +48,9 @@ const Banner = () => {
                 fontSize: "57px",
                 color: "white",
                 lineHeight: "1.3",
+                marginTop: {
+                  xs: "10px",
+                },
                 marginBottom: "20px",
                 [theme.breakpoints.down("lg")]: {
                   fontSize: "26px",
@@ -71,7 +74,11 @@ const Banner = () => {
                 color: "#3a7af3",
                 padding: "10px 40px",
                 marginTop: "24px",
-                width: "50%",
+                width: {
+                  xs: "fit-content",
+                  lg: "50%",
+                },
+
                 borderRadius: "25px",
                 [theme.breakpoints.down("lg")]: {
                   marginBottom: "120px",
@@ -175,7 +182,15 @@ const Banner = () => {
                     index={index}
                   />
                   {index < CounterData.length - 1 && (
-                    <Divider orientation="vertical" flexItem />
+                    <Divider
+                      orientation="vertical"
+                      flexItem
+                      sx={{
+                        display: {
+                          xs: "none",
+                        },
+                      }}
+                    />
                   )}
                 </Stack>
               ))}

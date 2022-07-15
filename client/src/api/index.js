@@ -1,16 +1,39 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
 
 const API = axios.create({
   baseURL: "https://conssols.herokuapp.com/api",
 });
 
+// API.interceptors.request.use((req) => {
+//   if (localStorage.getItem("profile")) {
+//     req.headers.Authorization = `Bearer ${
+//       JSON.parse(localStorage.getItem("profile")).token
+//     }`;
+//   }
+
+//   return req;
+// });
+
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
-    req.headers.Authorization = `Bearer ${
-      JSON.parse(localStorage.getItem("profile")).token
-    }`;
+    const token = JSON.parse(localStorage.getItem("profile")).token;
+    if (token) {
+      const userToken = jwt_decode(token);
+      const isExpired = userToken.exp * 2000 < Date.now();
+      if (!isExpired) {
+        req.headers.Authorization = `Bearer ${token}`;
+        return req;
+      }
+      const dispatch = useDispatch();
+      try {
+        dispatch({ type: "LOGOUT" });
+      } catch (e) {
+        console.log(e);
+      }
+    }
   }
-
   return req;
 });
 

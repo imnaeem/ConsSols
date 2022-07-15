@@ -27,15 +27,13 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
 
-  height: "80px",
+  height: { xs: "60px", lg: "80px" },
 }));
 
 const HeaderBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: "white",
   zIndex: theme.zIndex.drawer + 1,
 }));
-
-const userMenu = ["Dashboard", "Logout"];
 
 const Header = () => {
   const theme = useTheme();
@@ -101,7 +99,8 @@ const Header = () => {
     <HeaderBar position="sticky" variant="outlined" elevation={0}>
       <StyledToolbar
         sx={{
-          margin: { xs: "0 10px", sm: "0 40px" },
+          margin: { xs: "0px 10px 0px 0px", sm: "0 40px" },
+          padding: { xs: "0px" },
         }}
       >
         <IconButton
@@ -159,7 +158,7 @@ const Header = () => {
           <Box
             component="img"
             sx={{
-              width: "180px",
+              width: { xs: "150px", lg: "180px" },
             }}
             alt="logo"
             src={logo}
