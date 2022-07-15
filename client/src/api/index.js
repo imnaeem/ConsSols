@@ -1,6 +1,5 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { useDispatch } from "react-redux";
 
 const API = axios.create({
   baseURL: "https://conssols.herokuapp.com/api",
@@ -26,7 +25,7 @@ API.interceptors.request.use((req) => {
       console.log(isExpired);
       if (!isExpired) {
         try {
-          useDispatch({ type: "LOGOUT" });
+          localStorage.clear();
           window.location.replace("/user/signin");
         } catch (e) {
           console.log(e);
