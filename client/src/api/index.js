@@ -21,6 +21,7 @@ API.interceptors.request.use((req) => {
     const token = JSON.parse(localStorage.getItem("profile")).token;
     if (token) {
       const userToken = jwt_decode(token);
+      console.log(userToken);
       const isExpired = userToken.exp * 2000 < Date.now();
       if (!isExpired) {
         req.headers.Authorization = `Bearer ${token}`;
@@ -29,6 +30,7 @@ API.interceptors.request.use((req) => {
       const dispatch = useDispatch();
       try {
         dispatch({ type: "LOGOUT" });
+        window.location.replace("/user/signin");
       } catch (e) {
         console.log(e);
       }
