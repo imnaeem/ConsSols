@@ -90,7 +90,8 @@ const Details = ({ company }) => {
               precision={0.5}
             />
             <Typography sx={{ marginLeft: "5px" }}>
-              {"(" + reviews.length + " Reviews)"}
+              {"(" + reviews.length}
+              {reviews.length === 1 ? " Review)" : " Reviews)"}
             </Typography>
           </Box>
         </Box>
