@@ -8,12 +8,9 @@ const Details = ({ company }) => {
     tagline,
     employees,
     founded,
-    address,
     rate,
     summary,
     reviews,
-    services,
-    username,
     companyImage,
   } = company;
 
