@@ -210,7 +210,10 @@ const Projects = ({ project }) => {
             </Stack>
             <Typography
               sx={{
-                padding: "15px 30px 15px 0px",
+                padding: {
+                  xs: "15px 0px",
+                  lg: "15px 30px 15px 0px",
+                },
                 // minHeight: "95px",
                 lineHeight: "1.7",
               }}
