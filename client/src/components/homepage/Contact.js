@@ -20,7 +20,10 @@ const Contact = () => {
         }}
       >
         <Stack
-          direction="row"
+          direction={{
+            xs: "column",
+            lg: "row",
+          }}
           justifyContent="space-between"
           alignItems="center"
           sx={{
@@ -29,7 +32,10 @@ const Contact = () => {
         >
           <Typography
             sx={{
-              fontSize: "40px",
+              fontSize: {
+                xs: "30px",
+                lg: "40px",
+              },
               color: "white",
               fontWeight: "bold",
             }}
