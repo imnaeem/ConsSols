@@ -8,14 +8,11 @@ import {
   Button,
   Grow,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { Link, useNavigate } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import CampaignIcon from "@mui/icons-material/Campaign";
 import loadingImage from "../../images/loading-image.png";
@@ -55,7 +52,6 @@ const Company = ({ company }) => {
 
   const theme = useTheme();
   const classes = useStyles;
-  const navigate = useNavigate();
 
   let ratingsAvg = 0;
 
@@ -147,6 +143,7 @@ const Company = ({ company }) => {
                   <Typography
                     sx={{
                       fontSize: "16px",
+                      wordBreak: "break-all",
                     }}
                   >
                     {tagline}
@@ -154,7 +151,11 @@ const Company = ({ company }) => {
                   <Box
                     sx={{
                       marginLeft: "-2px",
-                      display: "flex",
+
+                      display: {
+                        xs: "block",
+                        lg: "flex",
+                      },
                       alignItems: "center",
                     }}
                   >
@@ -173,8 +174,12 @@ const Company = ({ company }) => {
 
               <Typography
                 sx={{
-                  padding: "15px 30px 15px 0px",
+                  padding: {
+                    xs: "0px 0px 15px 0px",
+                    lg: "15px 30px 15px 0px",
+                  },
                   lineHeight: "1.7",
+                  wordWrap: "break-word",
                 }}
               >
                 {summary}

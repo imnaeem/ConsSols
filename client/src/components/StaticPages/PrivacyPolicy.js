@@ -1,9 +1,6 @@
 import React from "react";
 import { Paper, Stack, Box } from "@mui/material";
 import { Typography } from "@mui/material";
-import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import VpnLockIcon from "@mui/icons-material/VpnLock";
 import Contact from "../homepage/Contact";
 import { Helmet } from "react-helmet";
 

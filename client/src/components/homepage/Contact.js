@@ -16,7 +16,10 @@ const Contact = () => {
             " url(https://assets.goodfirms.co/categories/home-bottom-building.svg) 0 0 repeat-x",
           paddingRight: "15px",
           paddingLeft: "15px",
-          margin: "0px 40px",
+          margin: {
+            xs: "0px",
+            lg: "0px 40px",
+          },
         }}
       >
         <Stack

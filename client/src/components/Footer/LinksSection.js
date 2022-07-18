@@ -8,7 +8,6 @@ import {
   ListItemText,
 } from "@mui/material";
 import { Reviewer, Company, About } from "./Links.js";
-import SingleLink from "./SingleLink.js";
 import { Link } from "react-router-dom";
 
 const LinksSection = (props) => {
@@ -26,7 +25,10 @@ const LinksSection = (props) => {
   return (
     <Box
       sx={{
-        width: "250px",
+        width: {
+          xs: "100%",
+          lg: "250px",
+        },
       }}
     >
       <Typography

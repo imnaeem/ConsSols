@@ -15,7 +15,6 @@ import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCompanies } from "../../actions/companies";
 import usePagination from "../Pagination";
-import { useLocation } from "react-router-dom";
 import Company from "./Company";
 import SearchCompanies from "./SearchCompanies";
 import { Helmet } from "react-helmet";

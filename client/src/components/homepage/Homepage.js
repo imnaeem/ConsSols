@@ -1,6 +1,5 @@
 import React from "react";
 import Banner from "./Banner";
-import Review from "./Review";
 import WriteReview from "./WriteReview";
 import Process from "./Process";
 import Contact from "./Contact";

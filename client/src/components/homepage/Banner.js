@@ -23,9 +23,9 @@ const Banner = () => {
           direction="row"
           spacing={5}
           sx={{
-            padding: "70px 60px 0px 60px",
-            [theme.breakpoints.down("lg")]: {
-              padding: "25px 60px 20px 60px",
+            padding: {
+              xs: "25px 30px 20px 30px",
+              lg: "70px 60px 0px 60px",
             },
           }}
         >
@@ -189,15 +189,17 @@ const Banner = () => {
                     index={index}
                   />
                   {index < CounterData.length - 1 && (
-                    <Divider
-                      orientation="vertical"
-                      flexItem
-                      sx={{
-                        display: {
-                          xs: "none",
-                        },
-                      }}
-                    />
+                    <Box>
+                      <Divider
+                        orientation="vertical"
+                        sx={{
+                          display: {
+                            xs: "none",
+                            lg: "block",
+                          },
+                        }}
+                      />
+                    </Box>
                   )}
                 </Stack>
               ))}

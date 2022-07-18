@@ -1,10 +1,5 @@
 import { React } from "react";
-import {
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  ListItemIcon,
-} from "@mui/material";
+import { ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 
 const MenuLink = (props) => {

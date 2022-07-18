@@ -64,9 +64,15 @@ const Process = () => {
         <Stack flex={1} direction="column" spacing={3} justifyContent="center">
           <Typography
             sx={{
-              fontSize: "40px",
+              fontSize: {
+                xs: "30px",
+                lg: "40px",
+              },
               fontWeight: "600",
-              lineHeight: "60px",
+              lineHeight: {
+                xs: 1.3,
+                lg: "60px",
+              },
             }}
           >
             ConsSols Ratings & Reviews you can rely on
