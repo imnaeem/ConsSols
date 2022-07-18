@@ -10,6 +10,8 @@ import {
   Pagination,
 } from "@mui/material";
 
+import { makeStyles } from "@mui/styles";
+
 import Contact from "./../homepage/Contact";
 import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,8 +20,15 @@ import usePagination from "../Pagination";
 import Company from "./Company";
 import SearchCompanies from "./SearchCompanies";
 import { Helmet } from "react-helmet";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Companies = () => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+
+  const CompaniesBackground = matches ? Paper : Box;
+
   const dispatch = useDispatch();
 
   const allCompanies = useSelector((state) => state.companies);
@@ -76,9 +85,9 @@ const Companies = () => {
           </Paper>
         )}
 
-        <Paper
+        <CompaniesBackground
           sx={{
-            padding: "20px",
+            padding: { xs: "0px", lg: "20px" },
           }}
         >
           {allCompanies.fetched ? (
@@ -108,11 +117,11 @@ const Companies = () => {
               )}
             </Box>
           ) : (
-            <Box sx={{ padding: "10px 10px" }}>
+            <Paper sx={{ padding: "20px" }}>
               <LinearProgress />
-            </Box>
+            </Paper>
           )}
-        </Paper>
+        </CompaniesBackground>
       </Box>
 
       <Contact />
