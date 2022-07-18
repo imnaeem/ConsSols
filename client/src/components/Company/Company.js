@@ -36,8 +36,10 @@ const Company = () => {
     <Box
       sx={{
         background: "#f5f5f5",
-
-        padding: "30px 60px",
+        padding: {
+          lg: "30px 60px",
+          xs: "10px 30px 30px 30px",
+        },
       }}
     >
       {checkCompany.fetched && clientReviews.fetched ? (
@@ -46,7 +48,10 @@ const Company = () => {
             <title>{company[0].companyName}</title>
           </Helmet>
           <Stack
-            direction="row"
+            direction={{
+              lg: "row",
+              xs: "column",
+            }}
             justifyContent="space-around"
             spacing={3}
             alignItems="flex-start"
@@ -57,7 +62,7 @@ const Company = () => {
               direction="column"
               flex={2.3}
               spacing={3}
-              sx={{ maxWidth: { xl: "750px", lg: "750px" } }}
+              sx={{ maxWidth: { xl: "750px", lg: "750px", xs: "100%" } }}
             >
               <div id="details">
                 <Details company={company[0]} />

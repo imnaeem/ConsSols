@@ -76,7 +76,10 @@ const Details = ({ company }) => {
           <Box
             sx={{
               marginLeft: "-2px",
-              display: "flex",
+              display: {
+                xs: "block",
+                lg: "flex",
+              },
               alignItems: "center",
             }}
           >

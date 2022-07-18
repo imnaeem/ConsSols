@@ -4,7 +4,7 @@ import CallIcon from "@mui/icons-material/Call";
 
 const RightSidebar = ({ phone, address }) => {
   return (
-    <Stack direction="column" flex={1}>
+    <Stack direction="column" flex={1} sx={{ width: { xs: "100%" } }}>
       <Stack direction="column" spacing={2}>
         <Paper elevation={2}>
           <Typography

@@ -12,6 +12,10 @@ const LeftSidebar = () => {
         minWidth: "315px",
         position: "sticky",
         top: "111px",
+        display: {
+          lg: "block",
+          xs: "none",
+        },
       }}
     >
       <List sx={{ padding: "0px" }}>

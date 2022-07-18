@@ -70,7 +70,10 @@ const Portfolios = ({ portfolios }) => {
               </Typography>
               <Divider orientation="horizontal" flexItem />
               <Stack
-                direction="row"
+                direction={{
+                  lg: "row",
+                  xs: "column",
+                }}
                 spacing={3}
                 justifyContent="space-around"
                 sx={{
