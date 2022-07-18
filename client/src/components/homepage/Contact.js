@@ -27,7 +27,7 @@ const Contact = () => {
             xs: "column",
             lg: "row",
           }}
-          spacing={{ xs: 1.5, lg: 0 }}
+          spacing={{ xs: 1.3, lg: 0 }}
           justifyContent={{
             xs: "center",
             lg: "space-between",

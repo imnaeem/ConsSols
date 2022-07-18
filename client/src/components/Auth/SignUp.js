@@ -16,7 +16,7 @@ const Signup = () => {
       </Helmet>
       <Box
         sx={{
-          padding: { xs: "40px", sm: "40px 60px" },
+          padding: { xs: "30px", sm: "40px 60px" },
         }}
       >
         <Typography

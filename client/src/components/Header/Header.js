@@ -98,7 +98,7 @@ const Header = () => {
     <HeaderBar position="sticky" variant="outlined" elevation={0}>
       <StyledToolbar
         sx={{
-          margin: { xs: "0px 10px 0px 0px", sm: "0 40px" },
+          margin: { xs: "0px 13px 0px 3px", sm: "0 40px" },
           padding: { xs: "0px" },
           height: { xs: "60px", lg: "80px" },
         }}

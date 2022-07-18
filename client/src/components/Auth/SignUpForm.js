@@ -18,7 +18,7 @@ import styled from "@emotion/styled";
 import { useFormik } from "formik";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signup } from "../../actions/auth";
 import SendIcon from "@mui/icons-material/Send";
 import { SignupValidation } from "../ValidationSchemas";
@@ -48,7 +48,6 @@ const SignUpForm = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-    handleReset,
     resetForm,
   } = useFormik({
     initialValues: {
@@ -287,20 +286,6 @@ const SignUpForm = () => {
                 >
                   {isSubmitting ? "Creating Account..." : "Signup"}
                 </LoadingButton>
-                {/* <Button
-                  type="submit"
-                  disabled={isSubmitting}
-                  variant="contained"
-                  size="large"
-                  fullWidth
-                  sx={{
-                    padding: "10px 40px",
-                    borderRadius: "25px",
-                    background: "#3a7af3",
-                  }}
-                >
-                  {isSubmitting ? "Creating Account..." : "Signup"}
-                </Button> */}
               </Box>
             </form>
 

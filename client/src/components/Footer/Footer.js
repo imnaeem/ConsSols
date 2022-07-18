@@ -32,8 +32,10 @@ const Footer = () => {
             flexItem
             sx={{
               display: { xs: "block", lg: "none" },
-
-              margin: "40px 40px",
+              margin: {
+                xs: "20px",
+                lg: "40px",
+              },
             }}
           />
 
@@ -70,7 +72,10 @@ const Footer = () => {
           orientation="horizontal"
           flexItem
           sx={{
-            margin: "35px 0px 15px 0px",
+            margin: {
+              xs: "15px 0px 15px 0px",
+              lg: "35px 0px 15px 0px",
+            },
           }}
         />
         <Typography

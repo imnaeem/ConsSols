@@ -5,7 +5,6 @@ import {
   Stack,
   Typography,
   Button,
-  Checkbox,
   Divider,
   Grow,
   Alert,
@@ -15,7 +14,7 @@ import {
 } from "@mui/material";
 
 import styled from "@emotion/styled";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
@@ -40,8 +39,6 @@ const TextButton = styled(Button)(({ theme }) => ({
   fontWeight: "600",
 }));
 
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
-
 const SignIn = () => {
   const emailInput = useRef(null);
   const [error, setError] = useState(null);
@@ -59,8 +56,6 @@ const SignIn = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-    handleReset,
-    resetForm,
   } = useFormik({
     initialValues: {
       email: "",
@@ -125,7 +120,15 @@ const SignIn = () => {
           }}
         >
           <Grow in>
-            <Paper elevation={2} sx={{ padding: "40px 50px" }}>
+            <Paper
+              elevation={2}
+              sx={{
+                padding: {
+                  xs: "20px 20px",
+                  lg: "40px 50px",
+                },
+              }}
+            >
               <Typography
                 sx={{
                   lineHeight: "1.5",
@@ -238,7 +241,12 @@ const SignIn = () => {
               <Divider
                 orientation="horizontal"
                 flexItem
-                sx={{ margin: "20px 50px" }}
+                sx={{
+                  margin: {
+                    xs: "8px 0px",
+                    lg: "20px 50px",
+                  },
+                }}
               >
                 OR
               </Divider>
