@@ -20,10 +20,16 @@ import usePagination from "../Pagination";
 import { useLocation } from "react-router-dom";
 import { checkCompanyProfile } from "./../../actions/company";
 import { Helmet } from "react-helmet";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const FindProjects = () => {
   const location = useLocation();
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("lg"));
+
+  const ProjectsBackground = matches ? Paper : Box;
 
   const company = useSelector((state) => state.checkCompanyProfile);
 
@@ -98,9 +104,9 @@ const FindProjects = () => {
           },
         }}
       >
-        <Paper
+        <ProjectsBackground
           sx={{
-            padding: "20px",
+            padding: { xs: "0px", lg: "20px" },
           }}
         >
           {JSON.parse(localStorage.getItem("profile")) &&
@@ -134,8 +140,16 @@ const FindProjects = () => {
                     )}
                   </Box>
                 ) : (
-                  <Box sx={{ padding: "10px 10px" }}>
-                    <LinearProgress />
+                  <Box>
+                    {!matches ? (
+                      <Paper sx={{ padding: "20px" }}>
+                        <LinearProgress />
+                      </Paper>
+                    ) : (
+                      <Box sx={{ padding: "10px" }}>
+                        <LinearProgress />
+                      </Box>
+                    )}
                   </Box>
                 )}
               </Box>
@@ -181,8 +195,16 @@ const FindProjects = () => {
                             )}
                           </Box>
                         ) : (
-                          <Box sx={{ padding: "10px 10px" }}>
-                            <LinearProgress />
+                          <Box>
+                            {!matches ? (
+                              <Paper sx={{ padding: "20px" }}>
+                                <LinearProgress />
+                              </Paper>
+                            ) : (
+                              <Box sx={{ padding: "10px" }}>
+                                <LinearProgress />
+                              </Box>
+                            )}
                           </Box>
                         )}
                       </Box>
@@ -214,8 +236,16 @@ const FindProjects = () => {
                     )}
                   </Box>
                 ) : (
-                  <Box sx={{ padding: "10px 10px" }}>
-                    <LinearProgress />
+                  <Box>
+                    {!matches ? (
+                      <Paper sx={{ padding: "20px" }}>
+                        <LinearProgress />
+                      </Paper>
+                    ) : (
+                      <Box sx={{ padding: "10px" }}>
+                        <LinearProgress />
+                      </Box>
+                    )}
                   </Box>
                 )}
               </Box>
@@ -250,13 +280,21 @@ const FindProjects = () => {
                   )}
                 </Box>
               ) : (
-                <Box sx={{ padding: "10px 10px" }}>
-                  <LinearProgress />
+                <Box>
+                  {!matches ? (
+                    <Paper sx={{ padding: "20px" }}>
+                      <LinearProgress />
+                    </Paper>
+                  ) : (
+                    <Box sx={{ padding: "10px" }}>
+                      <LinearProgress />
+                    </Box>
+                  )}
                 </Box>
               )}
             </Box>
           )}
-        </Paper>
+        </ProjectsBackground>
       </Box>
 
       <Contact />

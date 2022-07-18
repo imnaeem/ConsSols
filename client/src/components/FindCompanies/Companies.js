@@ -117,9 +117,17 @@ const Companies = () => {
               )}
             </Box>
           ) : (
-            <Paper sx={{ padding: "20px" }}>
-              <LinearProgress />
-            </Paper>
+            <Box>
+              {!matches ? (
+                <Paper sx={{ padding: "20px" }}>
+                  <LinearProgress />
+                </Paper>
+              ) : (
+                <Box sx={{ padding: "10px" }}>
+                  <LinearProgress />
+                </Box>
+              )}
+            </Box>
           )}
         </CompaniesBackground>
       </Box>
