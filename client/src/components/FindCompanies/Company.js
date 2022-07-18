@@ -98,7 +98,12 @@ const Company = ({ company }) => {
             </Box>
           )}
 
-          <Stack direction="row">
+          <Stack
+            direction={{
+              xs: "column",
+              lg: "row",
+            }}
+          >
             <Stack direction="column" flex={5}>
               <Stack direction="row" spacing={2} alignItems="center">
                 <Box
@@ -134,7 +139,6 @@ const Company = ({ company }) => {
                       fontSize: "20px",
                       fontWeight: "bold",
                       color: "#333",
-
                       textTransform: "none",
                     }}
                   >
@@ -218,7 +222,13 @@ const Company = ({ company }) => {
               alignItems="flex-start"
               spacing={2.3}
               sx={{
-                marginLeft: "30px",
+                marginLeft: {
+                  xs: "0px",
+                  lg: "30px",
+                },
+                marginTop: {
+                  xs: "15px",
+                },
               }}
             >
               <Button

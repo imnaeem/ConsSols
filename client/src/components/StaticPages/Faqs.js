@@ -12,10 +12,11 @@ import {
   Box,
   Divider,
 } from "@mui/material";
+import Contact from "../homepage/Contact";
 
 const Faqs = () => {
   return (
-    <Box sx={{}}>
+    <Box>
       <Helmet>
         <title>Frequently Asked Questions</title>
       </Helmet>
@@ -23,7 +24,10 @@ const Faqs = () => {
         elevation={2}
         sx={{
           padding: "30px",
-          margin: "30px 60px",
+          margin: {
+            xs: "30px",
+            lg: "30px 60px",
+          },
         }}
       >
         <Stack spacing={3}>
@@ -172,6 +176,7 @@ const Faqs = () => {
           </Accordion>
         </Stack>
       </Paper>
+      <Contact />
     </Box>
   );
 };

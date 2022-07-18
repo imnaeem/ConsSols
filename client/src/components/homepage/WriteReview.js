@@ -9,7 +9,10 @@ const WriteReview = () => {
   return (
     <Box
       sx={{
-        margin: "50px 60px",
+        margin: {
+          xs: "50px 30px",
+          lg: "50px 60px",
+        },
       }}
     >
       <Stack
@@ -17,6 +20,10 @@ const WriteReview = () => {
         alignItems="center"
         sx={{
           margin: "20px 0px",
+          display: {
+            xs: "none",
+            lg: "flex",
+          },
         }}
       >
         <Typography

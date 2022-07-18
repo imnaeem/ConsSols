@@ -55,8 +55,28 @@ const SearchCompanies = () => {
             }}
           >
             <FormikProvider value={formikbag}>
-              <Stack direction="row" alignItems="center" spacing={2}>
-                <Stack direction="row" spacing={2} flex={4}>
+              <Stack
+                direction={{
+                  xs: "column",
+                  lg: "row",
+                }}
+                alignItems="center"
+                spacing={2}
+                sx={{
+                  display: {
+                    xs: "block",
+                    lg: "flex",
+                  },
+                }}
+              >
+                <Stack
+                  direction={{
+                    xs: "column",
+                    lg: "row",
+                  }}
+                  spacing={2}
+                  flex={4}
+                >
                   <FastField
                     as={TextField}
                     select

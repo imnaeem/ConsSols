@@ -155,7 +155,12 @@ const Projects = ({ project }) => {
           borderRadius: "10px",
         }}
       >
-        <Stack direction="row">
+        <Stack
+          direction={{
+            xs: "column",
+            lg: "row",
+          }}
+        >
           <Stack direction="column" flex={5}>
             <Stack direction="row" spacing={2} alignItems="center">
               <Box
@@ -220,7 +225,10 @@ const Projects = ({ project }) => {
             alignItems="flex-start"
             spacing={2.3}
             sx={{
-              marginLeft: "30px",
+              marginLeft: {
+                xs: "0px",
+                lg: "30px",
+              },
             }}
           >
             <Button

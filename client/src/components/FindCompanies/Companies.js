@@ -62,7 +62,10 @@ const Companies = () => {
       <Box
         sx={{
           background: "#f5f5f5",
-          padding: "30px 60px",
+          padding: {
+            xs: "30px 20px",
+            lg: "30px 60px",
+          },
         }}
       >
         {allCompanies.fetched && (

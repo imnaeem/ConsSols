@@ -6,7 +6,10 @@ const Details = () => {
     <Box>
       <Box
         sx={{
-          margin: "0px 60px",
+          margin: {
+            xs: "0px 30px",
+            lg: "0px 60px",
+          },
           padding: "40px 0px",
         }}
       >
@@ -27,10 +30,20 @@ const Details = () => {
           construction services to clients. ConSols is the best of all platforms
           that provide verity of companies to develop your projects ranging from
           single house to larger farm houses. There are large numbers of
-          builders that claim to provide excellent construction services. To
-          help these service seekers cut through the clutter and find the best
-          company, ConsSols have listed top construction companies. These top
-          performers are verified through our verification process real and
+          builders that claim to provide excellent construction services.
+        </Typography>
+        <Typography
+          sx={{
+            display: {
+              xs: "none",
+              lg: "block",
+            },
+          }}
+        >
+          {" "}
+          To help these service seekers cut through the clutter and find the
+          best company, ConsSols have listed top construction companies. These
+          top performers are verified through our verification process real and
           authorized companies having good repute in the market. Find and hire
           the best builder from the below list:
         </Typography>

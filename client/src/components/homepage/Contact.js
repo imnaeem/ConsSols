@@ -24,7 +24,11 @@ const Contact = () => {
             xs: "column",
             lg: "row",
           }}
-          justifyContent="space-between"
+          spacing={{ xs: 1.5, lg: 0 }}
+          justifyContent={{
+            xs: "center",
+            lg: "space-between",
+          }}
           alignItems="center"
           sx={{
             height: "133px",
@@ -33,7 +37,7 @@ const Contact = () => {
           <Typography
             sx={{
               fontSize: {
-                xs: "30px",
+                xs: "25px",
                 lg: "40px",
               },
               color: "white",

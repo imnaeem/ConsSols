@@ -33,7 +33,11 @@ const LinksSection = (props) => {
         variant="h5"
         sx={{
           fontWeight: "500",
-          marginBottom: "15px",
+
+          marginBottom: {
+            xs: "0px",
+            lg: "15px",
+          },
         }}
       >
         {section}

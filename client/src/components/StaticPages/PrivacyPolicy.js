@@ -17,7 +17,10 @@ const PrivacyPolicy = () => {
         elevation={2}
         sx={{
           padding: "30px",
-          margin: "30px 60px",
+          margin: {
+            xs: "30px",
+            lg: "30px 60px",
+          },
         }}
       >
         <Stack spacing={3}>

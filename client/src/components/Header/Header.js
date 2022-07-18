@@ -22,12 +22,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "@emotion/react";
 //import { MenuItem } from "@mui/material/MenuItem";
 import { useDispatch } from "react-redux";
+import MobileMenu from "./MobileMenu";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
-
-  height: { xs: "60px", lg: "80px" },
 }));
 
 const HeaderBar = styled(AppBar)(({ theme }) => ({
@@ -101,6 +100,7 @@ const Header = () => {
         sx={{
           margin: { xs: "0px 10px 0px 0px", sm: "0 40px" },
           padding: { xs: "0px" },
+          height: { xs: "60px", lg: "80px" },
         }}
       >
         <IconButton
@@ -138,7 +138,7 @@ const Header = () => {
               alignItems: "center",
             }}
           >
-            <Typography>ssds</Typography>
+            <MobileMenu setIsDrawerOpen={setIsDrawerOpen} />
           </Box>
         </Drawer>
 

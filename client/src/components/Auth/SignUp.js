@@ -25,7 +25,10 @@ const Signup = () => {
             fontSize: "30px",
             lineHeight: "2.12rem",
             fontWeight: "600",
-            marginBottom: "10px",
+            marginBottom: {
+              xs: "0px",
+              lg: "10px",
+            },
           }}
         >
           Register with ConsSols account
@@ -49,14 +52,26 @@ const Signup = () => {
             >
               Get Started on ConsSols:
             </Typography>
-            <Typography sx={{ padding: "10px 0px" }}>
+            <Typography
+              sx={{
+                padding: "10px 0px",
+                display: {
+                  xs: "none",
+                  lg: "block",
+                },
+              }}
+            >
               For any business, conversion is everything. In this tech world, to
               increase conversion it is of paramount importance for any
               company/business to have a good online reputation. ConsSols
               provides companies & construction service seekers a platform to
               manage and improve their online credibility and reputation.
             </Typography>
-            <Typography sx={{ padding: "10px 0px" }}>
+            <Typography
+              sx={{
+                padding: "10px 0px",
+              }}
+            >
               Add your company to ConsSols to boost reputation which in turn
               will increase online exposure, gain online attention and grab more
               audience! Take the actionable profit-driven first step by filling

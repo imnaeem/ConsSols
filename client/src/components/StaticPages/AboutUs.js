@@ -17,7 +17,10 @@ const AboutUs = () => {
         elevation={2}
         sx={{
           padding: "30px",
-          margin: "30px 60px",
+          margin: {
+            xs: "30px",
+            lg: "30px 60px",
+          },
         }}
       >
         <Stack spacing={3}>
@@ -64,7 +67,13 @@ const AboutUs = () => {
             WHAT MAKES US BRILLIANT
           </Typography>
 
-          <Stack direction="row" spacing={2}>
+          <Stack
+            direction={{
+              xs: "column",
+              lg: "row",
+            }}
+            spacing={2}
+          >
             <Paper
               variant="outlined"
               sx={{

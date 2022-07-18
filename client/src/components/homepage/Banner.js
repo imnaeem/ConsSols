@@ -127,7 +127,10 @@ const Banner = () => {
       <Box
         sx={{
           position: "relative",
-          margin: "-80px 60px 20px 60px",
+          margin: {
+            xs: "-80px 30px 20px 30px",
+            lg: "-80px 60px 20px 60px",
+          },
         }}
       >
         <Card
@@ -143,7 +146,11 @@ const Banner = () => {
               color: "#333",
               lineHeight: "1.5",
               textAlign: "center",
-              marginBottom: "50px",
+              marginBottom: {
+                xs: "20px",
+                lg: "50px",
+              },
+
               [theme.breakpoints.down("lg")]: {
                 fontSize: "20px",
               },
