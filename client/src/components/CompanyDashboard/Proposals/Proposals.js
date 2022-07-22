@@ -17,6 +17,7 @@ import { getCompanyProposals } from "../../../actions/company";
 import usePagination from "./../../Pagination";
 import LazyLoad from "react-lazyload";
 import { Helmet } from "react-helmet";
+import { tabsClasses } from "@mui/material/Tabs";
 
 const Proposals = () => {
   const dispatch = useDispatch();
@@ -81,7 +82,18 @@ const Proposals = () => {
                 padding: "10px 20px",
               }}
             >
-              <TabList onChange={handleChange}>
+              <TabList
+                sx={{
+                  width: "100%",
+                  [`& .${tabsClasses.scrollButtons}`]: {
+                    "&.Mui-disabled": { opacity: 0.3 },
+                  },
+                }}
+                variant="scrollable"
+                scrollButtons="auto"
+                allowScrollButtonsMobile
+                onChange={handleChange}
+              >
                 <Tab
                   label="All Proposals"
                   value="1"
