@@ -329,19 +329,14 @@ const Header = () => {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  <MenuItem onClick={menuItemClick}>
-                    <Typography
-                      sx={{ textDecoration: "none" }}
-                      textAlign="center"
-                      id="dashboard"
-                    >
+                  <MenuItem sx={{ padding: "0px" }} onClick={menuItemClick}>
+                    <Typography sx={{ padding: "6px 16px" }} id="dashboard">
                       Dashboard
                     </Typography>
                   </MenuItem>
-                  <MenuItem onClick={menuItemClick}>
+                  <MenuItem sx={{ padding: "0px" }} onClick={menuItemClick}>
                     <Typography
-                      sx={{ textDecoration: "none" }}
-                      textAlign="center"
+                      sx={{ padding: "6px 16px", width: "100%" }}
                       id="logout"
                     >
                       Logout
