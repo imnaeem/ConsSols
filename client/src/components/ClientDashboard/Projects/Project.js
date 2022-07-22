@@ -117,11 +117,6 @@ const Project = ({ project }) => {
                 id="viewProposals"
                 variant="contained"
                 onClick={handleViewProposals}
-                // onClick={navigate(`/client/${_id}/proposals`, {
-                //   state: { id: _id },
-                // })}
-                //component={Link}
-                //to={`/client/${_id}/proposals`}
               >
                 View Proposals
               </Button>
@@ -226,7 +221,7 @@ const Project = ({ project }) => {
             direction="column"
             justifyContent="center"
             alignItems="flex-start"
-            sx={{ marginBottom: "5px" }}
+            spacing={1}
           >
             <Stack direction="row" spacing={1}>
               <Typography>Date:</Typography>
@@ -247,10 +242,8 @@ const Project = ({ project }) => {
                 {title}
               </Button>
             </Stack>
-          </Stack>
 
-          <Stack direction="row" spacing={2}>
-            <Box flex={1}>
+            <Box>
               <Button
                 disabled={status === "active" ? false : true}
                 id="closeProject"
@@ -261,7 +254,7 @@ const Project = ({ project }) => {
                 {closeButton}
               </Button>
             </Box>
-            <Box flex={1}>
+            <Box>
               <Button
                 id="viewProposals"
                 variant="contained"
