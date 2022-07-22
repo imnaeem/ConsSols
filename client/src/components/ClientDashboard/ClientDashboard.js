@@ -49,7 +49,7 @@ const CompanyDashboard = () => {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="projects" element={<Projects />} />
               <Route path="reviews" element={<Reviews />} />
-              <Route path="profile" element={<Profile />} />
+              <Route path="profile" element={<Profile type="client" />} />
               <Route path="add-project" element={<AddProject />} />
               <Route path="leave-review" element={<LeaveReview />} />
               <Route path="view-all-reviews" element={<ViewAllReviws />} />

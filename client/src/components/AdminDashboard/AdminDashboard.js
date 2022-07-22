@@ -46,7 +46,7 @@ const AdminDashboard = () => {
               <Route path="promotions" element={<Promotions />} />
               <Route path="verifications" element={<Verifications />} />
               <Route path="messages" element={<Messages />} />
-              <Route path="profile" element={<Profile />} />
+              <Route path="profile" element={<Profile type="admin" />} />
             </Routes>
           </Stack>
         </Box>

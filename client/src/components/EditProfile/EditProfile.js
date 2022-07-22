@@ -30,7 +30,7 @@ import loadingUser from "../../images/loading-user.png";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-const EditProfile = () => {
+const EditProfile = (props) => {
   const [response, setresponse] = useState(null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [showPassword, setShowPassword] = useState(false);
@@ -93,7 +93,7 @@ const EditProfile = () => {
               const user = JSON.parse(localStorage.getItem("profile"));
               user.result["userImage"] = values.userImage;
               localStorage.setItem("profile", JSON.stringify(user));
-              navigate("/admin/profile");
+              navigate(`/${props.type}/profile`);
               setresponse({
                 type: "success",
                 response: "Profile Updated Successfully!",

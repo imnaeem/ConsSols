@@ -51,7 +51,7 @@ const CompanyDashboard = () => {
               <Route path="reviews" element={<Reviews />} />
               <Route path="promotions" element={<Promotions />} />
               <Route path="new-promotion" element={<NewPromotion />} />
-              <Route path="profile" element={<Profile />} />
+              <Route path="profile" element={<Profile type="company" />} />
               <Route path="add-portfolio" element={<AddPortfolio />} />
             </Routes>
           </Stack>
