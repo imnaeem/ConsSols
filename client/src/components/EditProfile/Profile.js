@@ -3,7 +3,7 @@ import { Stack } from "@mui/material";
 import RightSidebar from "./RightSidebar";
 import EditProfile from "./EditProfile";
 
-const Profile = () => {
+const Profile = (props) => {
   return (
     <>
       <Stack
@@ -12,7 +12,7 @@ const Profile = () => {
         spacing={3}
         sx={{ maxWidth: { xl: "750px", lg: "750px" }, width: "100%" }}
       >
-        <EditProfile />
+        <EditProfile type={props.type} />
       </Stack>
 
       <RightSidebar />
