@@ -8,7 +8,6 @@ import {
   Divider,
   Pagination,
 } from "@mui/material";
-import LeftSidebar from "../LeftSidebar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getAllMessages } from "../../../actions/admin";
@@ -48,91 +47,69 @@ const Messages = () => {
   };
 
   return (
-    <Box
-      sx={{
-        background: "#f5f5f5",
-      }}
-    >
+    <Stack sx={{ width: "100%" }} flex={1}>
       <Helmet>
         <title>Messages</title>
       </Helmet>
-      <Box
-        sx={{
-          margin: "0px 45px",
-          padding: "30px 15px",
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-around"
-          spacing={3}
-          alignItems="flex-start"
+      <Paper>
+        <Box
+          sx={{
+            padding: "15px 20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          <LeftSidebar />
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: "20px",
+            }}
+          >
+            Messages
+          </Typography>
+        </Box>
 
-          <Stack flex={1}>
-            <Paper>
-              <Box
-                sx={{
-                  padding: "15px 20px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                  }}
-                >
-                  Messages
-                </Typography>
-              </Box>
-
-              <Divider orientation="horizontal" flexItem />
-              <Box
-                sx={{
-                  padding: "20px",
-                }}
-              >
-                {allMessages.fetched ? (
-                  <Box>
-                    {messages.length > 0 ? (
-                      <Stack direction="column" spacing={3}>
-                        {perPageMessages.map((message, index) => (
-                          <LazyLoad key={index} height={50}>
-                            <Message singleMessage={message} />
-                          </LazyLoad>
-                        ))}
-                        <Stack direction="row" justifyContent="center">
-                          <Pagination
-                            count={count}
-                            size="large"
-                            page={page}
-                            variant="outlined"
-                            shape="rounded"
-                            onChange={handlePageChange}
-                          />
-                        </Stack>
-                      </Stack>
-                    ) : (
-                      <Box>
-                        <Typography>No Messages Found</Typography>
-                      </Box>
-                    )}
-                  </Box>
-                ) : (
-                  <Box sx={{ padding: "10px 10px" }}>
-                    <LinearProgress />
-                  </Box>
-                )}
-              </Box>
-            </Paper>
-          </Stack>
-        </Stack>
-      </Box>
-    </Box>
+        <Divider orientation="horizontal" flexItem />
+        <Box
+          sx={{
+            padding: "20px",
+          }}
+        >
+          {allMessages.fetched ? (
+            <Box>
+              {messages.length > 0 ? (
+                <Stack direction="column" spacing={3}>
+                  {perPageMessages.map((message, index) => (
+                    <LazyLoad key={index} height={50}>
+                      <Message singleMessage={message} />
+                    </LazyLoad>
+                  ))}
+                  <Stack direction="row" justifyContent="center">
+                    <Pagination
+                      count={count}
+                      size="large"
+                      page={page}
+                      variant="outlined"
+                      shape="rounded"
+                      onChange={handlePageChange}
+                    />
+                  </Stack>
+                </Stack>
+              ) : (
+                <Box>
+                  <Typography>No Messages Found</Typography>
+                </Box>
+              )}
+            </Box>
+          ) : (
+            <Box sx={{ padding: "10px 10px" }}>
+              <LinearProgress />
+            </Box>
+          )}
+        </Box>
+      </Paper>
+    </Stack>
   );
 };
 

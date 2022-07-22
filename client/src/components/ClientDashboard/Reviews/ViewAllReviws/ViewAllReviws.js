@@ -3,13 +3,11 @@ import {
   Box,
   Divider,
   Paper,
-  Button,
   Grow,
   Stack,
   Typography,
   LinearProgress,
 } from "@mui/material";
-import LeftSidebar from "../../LeftSidebar";
 import Review from "./Review";
 import { useDispatch, useSelector } from "react-redux";
 import { getClientReviews } from "../../../../actions/client";
@@ -35,75 +33,56 @@ const ViewAllReviws = () => {
   //console.log(reviews);
 
   return (
-    <Box
-      sx={{
-        background: "#f5f5f5",
-      }}
-    >
+    <>
       <Helmet>
         <title>View All Reviews</title>
       </Helmet>
-      <Box
-        sx={{
-          margin: "0px 45px",
-          padding: "30px 15px",
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-around"
-          spacing={3}
-          alignItems="flex-start"
-        >
-          <LeftSidebar />
-          <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
-            <Stack flex={1}>
-              <Paper>
-                <Box
-                  sx={{
-                    padding: "15px 20px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: "20px",
-                    }}
-                  >
-                    Reviews
-                  </Typography>
-                </Box>
-                <Divider orientation="horizontal" flexItem />
-                {clientReviews.fetched ? (
-                  <Box padding="20px">
-                    {reviews.length > 0 ? (
-                      <Stack direction="column" spacing={3}>
-                        {reviews.map((review, index) => (
-                          <LazyLoad key={index} height={400}>
-                            <Review review={review} />
-                          </LazyLoad>
-                        ))}
-                      </Stack>
-                    ) : (
-                      <Box sx={{ textAlign: "center" }}>
-                        <Typography>No Reviews Found</Typography>
-                      </Box>
-                    )}
-                  </Box>
+      <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
+        <Stack sx={{ width: "100%" }} flex={1}>
+          <Paper>
+            <Box
+              sx={{
+                padding: "15px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                Reviews
+              </Typography>
+            </Box>
+            <Divider orientation="horizontal" flexItem />
+            {clientReviews.fetched ? (
+              <Box padding="20px">
+                {reviews.length > 0 ? (
+                  <Stack direction="column" spacing={3}>
+                    {reviews.map((review, index) => (
+                      <LazyLoad key={index} height={400}>
+                        <Review review={review} />
+                      </LazyLoad>
+                    ))}
+                  </Stack>
                 ) : (
-                  <Box sx={{ padding: "20px" }}>
-                    <LinearProgress />
+                  <Box sx={{ textAlign: "center" }}>
+                    <Typography>No Reviews Found</Typography>
                   </Box>
                 )}
-              </Paper>
-            </Stack>
-          </Grow>
+              </Box>
+            ) : (
+              <Box sx={{ padding: "20px" }}>
+                <LinearProgress />
+              </Box>
+            )}
+          </Paper>
         </Stack>
-      </Box>
-    </Box>
+      </Grow>
+    </>
   );
 };
 

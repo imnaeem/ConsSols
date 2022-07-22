@@ -12,6 +12,7 @@ import {
   ListItemButton,
   Menu,
   MenuItem,
+  CssBaseline,
   // CssBaseline,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -95,260 +96,267 @@ const Header = () => {
   };
 
   return (
-    <HeaderBar position="sticky" variant="outlined" elevation={0}>
-      <StyledToolbar
-        sx={{
-          margin: { xs: "0px 13px 0px 3px", sm: "0 40px" },
-          padding: { xs: "0px" },
-          height: { xs: "60px", lg: "80px" },
-        }}
-      >
-        <IconButton
-          onClick={() => {
-            setIsDrawerOpen((prevState) => !prevState);
-          }}
+    <>
+      <HeaderBar position="sticky" variant="outlined" elevation={0}>
+        <StyledToolbar
           sx={{
-            [theme.breakpoints.up("md")]: {
-              display: "none",
-            },
+            margin: { xs: "0px 13px 0px 3px", sm: "0 40px" },
+            padding: { xs: "0px" },
+            height: { xs: "60px", lg: "80px" },
           }}
         >
-          <MenuIcon />
-        </IconButton>
-        <Drawer
-          sx={{
-            width: "270px",
-            flexShrink: 0,
-            [`& .MuiDrawer-paper`]: {
-              width: "270px",
-              boxSizing: "border-box",
-            },
-          }}
-          anchor="left"
-          open={isDrawerOpen}
-          onClose={() => {
-            setIsDrawerOpen(false);
-          }}
-        >
-          <StyledToolbar />
-          <Box
+          <IconButton
+            onClick={() => {
+              setIsDrawerOpen((prevState) => !prevState);
+            }}
             sx={{
-              overflow: "auto",
-              display: "flex",
-              alignItems: "center",
+              [theme.breakpoints.up("md")]: {
+                display: "none",
+              },
             }}
           >
-            <MobileMenu setIsDrawerOpen={setIsDrawerOpen} />
-          </Box>
-        </Drawer>
-
-        <Box
-          flex={0.9}
-          component={Link}
-          to="/"
-          sx={{
-            minWidth: "205px",
-            fontSize: "20px",
-            fontWeight: "600",
-            color: "#1976d2",
-            textDecoration: "none",
-            textAlign: { xs: "center", sm: "left" },
-          }}
-        >
-          <Box
-            component="img"
+            <MenuIcon />
+          </IconButton>
+          <Drawer
             sx={{
-              width: { xs: "150px", lg: "180px" },
+              width: "270px",
+              flexShrink: 0,
+              [`& .MuiDrawer-paper`]: {
+                width: "270px",
+                boxSizing: "border-box",
+              },
             }}
-            alt="logo"
-            src={logo}
-          />
-        </Box>
-        <Box
-          flex={5}
-          sx={{
-            fontSize: "16px",
-            fontWeight: "600",
-            [theme.breakpoints.down("md")]: {
-              display: "none",
-            },
-          }}
-        >
-          <Stack direction="row" spacing={3}>
-            {(!user || user.result.type === "admin") && (
-              <ListItemButton
-                selected={location.pathname === "/find-companies"}
-                sx={{
-                  color:
-                    location.pathname === "/find-companies"
-                      ? "#3a7af3"
-                      : "#333",
-                  fontWeight: "600",
-                  maxWidth: "fit-content",
-                  borderRadius: "5px",
-                  padding: "6px 8px",
-                }}
-                variant="text"
-                component={Link}
-                to="/find-companies"
-              >
-                Find Companies
-              </ListItemButton>
-            )}
-            {(!user || user.result.type === "admin") && (
-              <ListItemButton
-                selected={location.pathname === "/find-projects"}
-                sx={{
-                  color:
-                    location.pathname === "/find-projects" ? "#3a7af3" : "#333",
-                  fontWeight: "600",
-                  maxWidth: "fit-content",
-                  borderRadius: "5px",
-                  padding: "6px 8px",
-                }}
-                variant="text"
-                component={Link}
-                to="/find-projects"
-              >
-                Find Projects
-              </ListItemButton>
-            )}
-            {user && user.result.type === "client" && (
-              <ListItemButton
-                selected={location.pathname === "/find-companies"}
-                sx={{
-                  color:
-                    location.pathname === "/find-companies"
-                      ? "#3a7af3"
-                      : "#333",
-                  fontWeight: "600",
-                  maxWidth: "fit-content",
-                  borderRadius: "5px",
-                  padding: "6px 8px",
-                }}
-                variant="text"
-                component={Link}
-                to="/find-companies"
-              >
-                Find Companies
-              </ListItemButton>
-            )}
-
-            {user && user.result.type === "company" && (
-              <ListItemButton
-                selected={location.pathname === "/find-projects"}
-                sx={{
-                  color:
-                    location.pathname === "/find-projects" ? "#3a7af3" : "#333",
-                  fontWeight: "600",
-                  maxWidth: "fit-content",
-                  borderRadius: "5px",
-                  padding: "6px 8px",
-                }}
-                variant="text"
-                component={Link}
-                to="/find-projects"
-              >
-                Find Projects
-              </ListItemButton>
-            )}
-
-            <ListItemButton
-              selected={location.pathname === "/about-us"}
+            anchor="left"
+            open={isDrawerOpen}
+            onClose={() => {
+              setIsDrawerOpen(false);
+            }}
+          >
+            <StyledToolbar />
+            <Box
               sx={{
-                color: location.pathname === "/about-us" ? "#3a7af3" : "#333",
-                fontWeight: "600",
-                maxWidth: "fit-content",
-                borderRadius: "5px",
-                padding: "6px 8px",
+                overflow: "auto",
+                display: "flex",
+                alignItems: "center",
               }}
-              variant="text"
-              component={Link}
-              to="/about-us"
             >
-              Why ConsSols
-            </ListItemButton>
-          </Stack>
-        </Box>
-        <Stack direction="row" spacing={2}>
-          {!user && (
-            <Stack direction="row" spacing={2}>
-              <Button variant="outlined" component={Link} to="/user/signin">
-                Login
-              </Button>
-              <Button
-                component={Link}
-                to="/user/signup"
-                variant="outlined"
-                sx={{
-                  [theme.breakpoints.down("lg")]: {
-                    display: "none",
-                  },
-                }}
-              >
-                Sign Up
-              </Button>
-            </Stack>
-          )}
-
-          {user && (
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar
-                    alt="user image"
-                    src={
-                      JSON.parse(localStorage.getItem("profile"))
-                        ? JSON.parse(localStorage.getItem("profile")).result
-                            .userImage
-                        : ""
-                    }
-                  >
-                    {user.result.firstName.charAt(0)}
-                  </Avatar>
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                disableScrollLock={true}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-              >
-                <MenuItem onClick={menuItemClick}>
-                  <Typography
-                    sx={{ textDecoration: "none" }}
-                    textAlign="center"
-                    id="dashboard"
-                  >
-                    Dashboard
-                  </Typography>
-                </MenuItem>
-                <MenuItem onClick={menuItemClick}>
-                  <Typography
-                    sx={{ textDecoration: "none" }}
-                    textAlign="center"
-                    id="logout"
-                  >
-                    Logout
-                  </Typography>
-                </MenuItem>
-              </Menu>
+              <MobileMenu setIsDrawerOpen={setIsDrawerOpen} />
             </Box>
-          )}
-        </Stack>
-      </StyledToolbar>
-    </HeaderBar>
+          </Drawer>
+
+          <Box
+            flex={0.9}
+            component={Link}
+            to="/"
+            sx={{
+              minWidth: "205px",
+              fontSize: "20px",
+              fontWeight: "600",
+              color: "#1976d2",
+              textDecoration: "none",
+              textAlign: { xs: "center", lg: "left" },
+            }}
+          >
+            <Box
+              component="img"
+              sx={{
+                width: { xs: "150px", lg: "180px" },
+              }}
+              alt="logo"
+              src={logo}
+            />
+          </Box>
+          <Box
+            flex={5}
+            sx={{
+              fontSize: "16px",
+              fontWeight: "600",
+              [theme.breakpoints.down("md")]: {
+                display: "none",
+              },
+            }}
+          >
+            <Stack direction="row" spacing={3}>
+              {(!user || user.result.type === "admin") && (
+                <ListItemButton
+                  selected={location.pathname === "/find-companies"}
+                  sx={{
+                    color:
+                      location.pathname === "/find-companies"
+                        ? "#3a7af3"
+                        : "#333",
+                    fontWeight: "600",
+                    maxWidth: "fit-content",
+                    borderRadius: "5px",
+                    padding: "6px 8px",
+                  }}
+                  variant="text"
+                  component={Link}
+                  to="/find-companies"
+                >
+                  Find Companies
+                </ListItemButton>
+              )}
+              {(!user || user.result.type === "admin") && (
+                <ListItemButton
+                  selected={location.pathname === "/find-projects"}
+                  sx={{
+                    color:
+                      location.pathname === "/find-projects"
+                        ? "#3a7af3"
+                        : "#333",
+                    fontWeight: "600",
+                    maxWidth: "fit-content",
+                    borderRadius: "5px",
+                    padding: "6px 8px",
+                  }}
+                  variant="text"
+                  component={Link}
+                  to="/find-projects"
+                >
+                  Find Projects
+                </ListItemButton>
+              )}
+              {user && user.result.type === "client" && (
+                <ListItemButton
+                  selected={location.pathname === "/find-companies"}
+                  sx={{
+                    color:
+                      location.pathname === "/find-companies"
+                        ? "#3a7af3"
+                        : "#333",
+                    fontWeight: "600",
+                    maxWidth: "fit-content",
+                    borderRadius: "5px",
+                    padding: "6px 8px",
+                  }}
+                  variant="text"
+                  component={Link}
+                  to="/find-companies"
+                >
+                  Find Companies
+                </ListItemButton>
+              )}
+
+              {user && user.result.type === "company" && (
+                <ListItemButton
+                  selected={location.pathname === "/find-projects"}
+                  sx={{
+                    color:
+                      location.pathname === "/find-projects"
+                        ? "#3a7af3"
+                        : "#333",
+                    fontWeight: "600",
+                    maxWidth: "fit-content",
+                    borderRadius: "5px",
+                    padding: "6px 8px",
+                  }}
+                  variant="text"
+                  component={Link}
+                  to="/find-projects"
+                >
+                  Find Projects
+                </ListItemButton>
+              )}
+
+              <ListItemButton
+                selected={location.pathname === "/about-us"}
+                sx={{
+                  color: location.pathname === "/about-us" ? "#3a7af3" : "#333",
+                  fontWeight: "600",
+                  maxWidth: "fit-content",
+                  borderRadius: "5px",
+                  padding: "6px 8px",
+                }}
+                variant="text"
+                component={Link}
+                to="/about-us"
+              >
+                Why ConsSols
+              </ListItemButton>
+            </Stack>
+          </Box>
+          <Stack direction="row" spacing={2}>
+            {!user && (
+              <Stack direction="row" spacing={2}>
+                <Button variant="outlined" component={Link} to="/user/signin">
+                  Login
+                </Button>
+                <Button
+                  component={Link}
+                  to="/user/signup"
+                  variant="outlined"
+                  sx={{
+                    [theme.breakpoints.down("lg")]: {
+                      display: "none",
+                    },
+                  }}
+                >
+                  Sign Up
+                </Button>
+              </Stack>
+            )}
+
+            {user && (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Dashboard">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar
+                      alt="user image"
+                      src={
+                        JSON.parse(localStorage.getItem("profile"))
+                          ? JSON.parse(localStorage.getItem("profile")).result
+                              .userImage
+                          : ""
+                      }
+                    >
+                      {user.result.firstName.charAt(0)}
+                    </Avatar>
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  disableScrollLock={true}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  <MenuItem onClick={menuItemClick}>
+                    <Typography
+                      sx={{ textDecoration: "none" }}
+                      textAlign="center"
+                      id="dashboard"
+                    >
+                      Dashboard
+                    </Typography>
+                  </MenuItem>
+                  <MenuItem onClick={menuItemClick}>
+                    <Typography
+                      sx={{ textDecoration: "none" }}
+                      textAlign="center"
+                      id="logout"
+                    >
+                      Logout
+                    </Typography>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            )}
+          </Stack>
+        </StyledToolbar>
+      </HeaderBar>
+      <Box id="back-to-top-anchor" />
+    </>
   );
 };
 

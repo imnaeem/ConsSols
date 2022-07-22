@@ -9,7 +9,6 @@ import {
   Alert,
 } from "@mui/material";
 import { React, useState, useRef, useEffect } from "react";
-import LeftSidebar from "../../LeftSidebar";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import { Helmet } from "react-helmet";
@@ -108,8 +107,7 @@ const AddPortfolio = () => {
     handleBlur,
     handleSubmit,
     setFieldValue,
-    setNewValue,
-    handleReset,
+
     resetForm,
   } = formikbag;
 
@@ -123,259 +121,231 @@ const AddPortfolio = () => {
   };
 
   return (
-    <Box
-      sx={{
-        background: "#f5f5f5",
-      }}
-    >
+    <>
       <Helmet>
         <title>Add Project</title>
       </Helmet>
-      <Box
-        sx={{
-          margin: "0px 45px",
-          padding: "30px 15px",
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-around"
-          spacing={3}
-          alignItems="flex-start"
-        >
-          <LeftSidebar />
+      <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
+        <Stack flex={1}>
+          <Paper>
+            <Box
+              sx={{
+                padding: "15px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                Add Project
+              </Typography>
+              <Button
+                component={Link}
+                to="/client/projects"
+                varaint="text"
+                sx={{ padding: "0px" }}
+              >
+                Go Back
+              </Button>
+            </Box>
 
-          <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
-            <Stack flex={1}>
-              <Paper>
-                <Box
-                  sx={{
-                    padding: "15px 20px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
+            <Divider orientation="horizontal" flexItem />
+
+            <Box
+              sx={{
+                padding: "20px",
+              }}
+            >
+              {response && (
+                <Grow in timeout={500}>
+                  <Alert
+                    elevation={1}
+                    severity={response.type === "error" ? "error" : "success"}
                     sx={{
-                      fontWeight: "bold",
-                      fontSize: "20px",
+                      margin: "0px 0px 20px 0px",
                     }}
                   >
-                    Add Project
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/client/projects"
-                    varaint="text"
-                    sx={{ padding: "0px" }}
+                    {response.response}
+                  </Alert>
+                </Grow>
+              )}
+              <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                <FormikProvider value={formikbag}>
+                  <Box
+                    sx={{
+                      "& > :not(style)": {
+                        margin: "8px 5px",
+                        width: "100%",
+                      },
+                    }}
                   >
-                    Go Back
-                  </Button>
-                </Box>
+                    <FastField
+                      as={TextField}
+                      id="title"
+                      label="Title"
+                      value={values.title}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      helperText={touched.title ? errors.title : ""}
+                      error={touched.title && Boolean(errors.title)}
+                      size="small"
+                      variant="outlined"
+                      fullWidth
+                    />
 
-                <Divider orientation="horizontal" flexItem />
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      sx={{ marginBottom: "16px !important" }}
+                    >
+                      <FastField
+                        as={TextField}
+                        select
+                        id="rate"
+                        label="Rate Range/sq ft"
+                        value={values.rate}
+                        onChange={handleChange("rate")}
+                        onBlur={handleBlur("rate")}
+                        helperText={touched.rate ? errors.rate : ""}
+                        error={touched.rate && Boolean(errors.rate)}
+                        size="small"
+                        variant="outlined"
+                        fullWidth
+                      >
+                        {costs.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </FastField>
+                      <FastField
+                        as={TextField}
+                        id="location"
+                        label="Location"
+                        value={values.location}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        helperText={touched.location ? errors.location : ""}
+                        error={touched.location && Boolean(errors.location)}
+                        size="small"
+                        variant="outlined"
+                        fullWidth
+                      />
+                    </Stack>
 
-                <Box
-                  sx={{
-                    padding: "20px",
-                  }}
-                >
-                  {response && (
-                    <Grow in timeout={500}>
-                      <Alert
-                        elevation={1}
-                        severity={
-                          response.type === "error" ? "error" : "success"
-                        }
+                    <Divider orientation="horizontal" />
+                    <Stack
+                      direction="row"
+                      justifyContent="space-between"
+                      alignItems="center"
+                    >
+                      <Typography
                         sx={{
-                          margin: "0px 0px 20px 0px",
+                          fontWeight: "bold",
+                          fontSize: "20px",
                         }}
                       >
-                        {response.response}
-                      </Alert>
-                    </Grow>
-                  )}
-                  <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                    <FormikProvider value={formikbag}>
-                      <Box
-                        sx={{
-                          "& > :not(style)": {
-                            margin: "8px 5px",
-                            width: "100%",
-                          },
+                        Upload Images
+                      </Typography>
+                      <input
+                        ref={fileRef}
+                        hidden
+                        size="small"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleFileUpload}
+                      />
+                      <Button
+                        onClick={() => {
+                          fileRef.current.click();
                         }}
+                        variant="outlined"
+                        startIcon={<CameraAltIcon />}
                       >
-                        <FastField
-                          as={TextField}
-                          id="title"
-                          label="Title"
-                          value={values.title}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          helperText={touched.title ? errors.title : ""}
-                          error={touched.title && Boolean(errors.title)}
-                          size="small"
-                          variant="outlined"
-                          fullWidth
-                        />
+                        Browse
+                      </Button>
+                    </Stack>
 
-                        <Stack
-                          direction="row"
-                          spacing={2}
-                          sx={{ marginBottom: "16px !important" }}
-                        >
-                          <FastField
-                            as={TextField}
-                            select
-                            id="rate"
-                            label="Rate Range/sq ft"
-                            value={values.rate}
-                            onChange={handleChange("rate")}
-                            onBlur={handleBlur("rate")}
-                            helperText={touched.rate ? errors.rate : ""}
-                            error={touched.rate && Boolean(errors.rate)}
-                            size="small"
-                            variant="outlined"
-                            fullWidth
-                          >
-                            {costs.map((option) => (
-                              <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                              </MenuItem>
-                            ))}
-                          </FastField>
-                          <FastField
-                            as={TextField}
-                            id="location"
-                            label="Location"
-                            value={values.location}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            helperText={touched.location ? errors.location : ""}
-                            error={touched.location && Boolean(errors.location)}
-                            size="small"
-                            variant="outlined"
-                            fullWidth
-                          />
-                        </Stack>
-
-                        <Divider orientation="horizontal" />
-                        <Stack
-                          direction="row"
-                          justifyContent="space-between"
-                          alignItems="center"
-                        >
-                          <Typography
-                            sx={{
-                              fontWeight: "bold",
-                              fontSize: "20px",
-                            }}
-                          >
-                            Upload Images
-                          </Typography>
-                          <input
-                            ref={fileRef}
-                            hidden
-                            size="small"
-                            type="file"
-                            accept="image/*"
-                            onChange={handleFileUpload}
-                          />
-                          <Button
-                            onClick={() => {
-                              fileRef.current.click();
-                            }}
-                            variant="outlined"
-                            startIcon={<CameraAltIcon />}
-                          >
-                            Browse
-                          </Button>
-                        </Stack>
-
-                        {values.projectImage !== "" && (
-                          <Stack
-                            direction="row"
-                            spacing={1}
-                            alignItems="center"
-                          >
-                            <Box
-                              sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                width: "55px",
-                                height: "55px",
-                                border: "1px solid #dce2ee",
-                                borderRadius: "5px",
-                                verticalAlign: "middle",
-                              }}
-                            >
-                              <Box
-                                component="img"
-                                src={values.projectImage}
-                                sx={{
-                                  maxHeight: "50px",
-                                  maxWidth: "50px",
-                                  verticalAlign: "middle",
-                                }}
-                              />
-                            </Box>
-                            <Typography flex={1}>{uploadImageName}</Typography>
-                          </Stack>
-                        )}
-
-                        <Divider orientation="horizontal" />
-                        <Typography
-                          sx={{ fontSize: "25px", fontWeight: "bold" }}
-                        >
-                          Description
-                        </Typography>
-
-                        <FastField
-                          as={TextField}
-                          id="details"
-                          label="Details"
-                          value={values.details}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          helperText={touched.details ? errors.details : ""}
-                          error={touched.details && Boolean(errors.details)}
-                          size="small"
-                          variant="outlined"
-                          fullWidth
-                          multiline
-                          rows={5}
-                          placeholder="Start from here..."
-                        />
-
-                        <LoadingButton
-                          type="submit"
-                          disabled={isSubmitting}
-                          loading={isSubmitting}
-                          variant="contained"
-                          size="large"
-                          fullWidth
+                    {values.projectImage !== "" && (
+                      <Stack direction="row" spacing={1} alignItems="center">
+                        <Box
                           sx={{
-                            padding: "10px 40px",
-                            borderRadius: "25px",
-                            background: "#3a7af3",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            width: "55px",
+                            height: "55px",
+                            border: "1px solid #dce2ee",
+                            borderRadius: "5px",
+                            verticalAlign: "middle",
                           }}
-                          endIcon={<SaveIcon />}
-                          loadingPosition="end"
                         >
-                          Add Project
-                        </LoadingButton>
-                      </Box>
-                    </FormikProvider>
-                  </form>
-                </Box>
-              </Paper>
-            </Stack>
-          </Grow>
+                          <Box
+                            component="img"
+                            src={values.projectImage}
+                            sx={{
+                              maxHeight: "50px",
+                              maxWidth: "50px",
+                              verticalAlign: "middle",
+                            }}
+                          />
+                        </Box>
+                        <Typography flex={1}>{uploadImageName}</Typography>
+                      </Stack>
+                    )}
+
+                    <Divider orientation="horizontal" />
+                    <Typography sx={{ fontSize: "25px", fontWeight: "bold" }}>
+                      Description
+                    </Typography>
+
+                    <FastField
+                      as={TextField}
+                      id="details"
+                      label="Details"
+                      value={values.details}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      helperText={touched.details ? errors.details : ""}
+                      error={touched.details && Boolean(errors.details)}
+                      size="small"
+                      variant="outlined"
+                      fullWidth
+                      multiline
+                      rows={5}
+                      placeholder="Start from here..."
+                    />
+
+                    <LoadingButton
+                      type="submit"
+                      disabled={isSubmitting}
+                      loading={isSubmitting}
+                      variant="contained"
+                      size="large"
+                      fullWidth
+                      sx={{
+                        padding: "10px 40px",
+                        borderRadius: "25px",
+                        background: "#3a7af3",
+                      }}
+                      endIcon={<SaveIcon />}
+                      loadingPosition="end"
+                    >
+                      Add Project
+                    </LoadingButton>
+                  </Box>
+                </FormikProvider>
+              </form>
+            </Box>
+          </Paper>
         </Stack>
-      </Box>
-    </Box>
+      </Grow>
+    </>
   );
 };
 

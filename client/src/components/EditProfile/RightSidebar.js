@@ -14,7 +14,7 @@ const RightSidebar = () => {
     //navigate("/");
   };
   return (
-    <Stack direction="column" flex={1}>
+    <Stack sx={{ width: "100%" }} direction="column" flex={1}>
       <Stack direction="column" spacing={2}>
         <Paper elevation={2}>
           <Typography

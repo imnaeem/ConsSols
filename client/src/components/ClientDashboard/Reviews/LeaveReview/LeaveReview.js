@@ -10,21 +10,18 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { React, useRef, useState, useEffect } from "react";
-import LeftSidebar from "../../LeftSidebar";
+
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
-import {
-  clientProjectValidation,
-  clientReviewValidation,
-} from "../../../ValidationSchemas";
-import { useSelector, useDispatch } from "react-redux";
+import { clientReviewValidation } from "../../../ValidationSchemas";
+import { useDispatch } from "react-redux";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { cleintAddReview } from "../../../../actions/client";
 import SaveIcon from "@mui/icons-material/Save";
 import { useFormik, FormikProvider, FastField } from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 
 import StarIcon from "@mui/icons-material/Star";

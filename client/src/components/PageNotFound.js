@@ -15,11 +15,16 @@ const PageNotFound = () => {
           elevation={2}
           sx={{
             padding: "30px",
-            margin: "30px 60px",
+
+            margin: {
+              xs: "30px",
+              lg: "30px 60px",
+            },
+
             textAlign: "center",
           }}
         >
-          <Box component="img" src={NotFoundImage} />
+          <Box component="img" src={NotFoundImage} sx={{ width: "100%" }} />
         </Paper>
       </Grow>
       <Contact />

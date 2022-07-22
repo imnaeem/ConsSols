@@ -8,32 +8,21 @@ import {
   Grow,
   Alert,
 } from "@mui/material";
-import { React, useState, useRef, useEffect } from "react";
-import LeftSidebar from "../../LeftSidebar";
+import { React, useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import { Helmet } from "react-helmet";
-
-import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { duration } from "./Dropdowns";
 import { promotionValidation } from "../../../ValidationSchemas";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { promoteCompany } from "../../../../actions/company";
 import SaveIcon from "@mui/icons-material/Save";
 import { convertToBase64 } from "../../../convertToBase64";
-import {
-  useFormik,
-  getIn,
-  FieldArray,
-  Field,
-  FormikProvider,
-  FastField,
-} from "formik";
-import { Link, useNavigate } from "react-router-dom";
+import { useFormik, FormikProvider, FastField } from "formik";
+import { Link } from "react-router-dom";
 
 const AddPortfolio = () => {
-  const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [response, setresponse] = useState(null);
   const [uploadImageName, setUploadImageName] = useState("");
@@ -132,175 +121,150 @@ const AddPortfolio = () => {
   };
 
   return (
-    <Box
-      sx={{
-        background: "#f5f5f5",
-      }}
-    >
+    <>
       <Helmet>
         <title>New Promotion</title>
       </Helmet>
-      <Box
-        sx={{
-          margin: "0px 45px",
-          padding: "30px 15px",
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-around"
-          spacing={3}
-          alignItems="flex-start"
-        >
-          <LeftSidebar />
+      <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
+        <Stack sx={{ width: "100%" }} flex={1}>
+          <Paper>
+            <Box
+              sx={{
+                padding: "15px 20px",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                }}
+              >
+                New Promotion
+              </Typography>
+              <Button
+                component={Link}
+                to="/company/promotions"
+                varaint="text"
+                sx={{ padding: "0px" }}
+              >
+                Go Back
+              </Button>
+            </Box>
 
-          <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
-            <Stack flex={1}>
-              <Paper>
-                <Box
-                  sx={{
-                    padding: "15px 20px",
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography
+            <Divider orientation="horizontal" flexItem />
+
+            <Box
+              sx={{
+                padding: "20px",
+              }}
+            >
+              {response && (
+                <Grow in timeout={500}>
+                  <Alert
+                    elevation={1}
+                    severity={response.type === "error" ? "error" : "success"}
                     sx={{
-                      fontWeight: "bold",
-                      fontSize: "20px",
+                      margin: "0px 0px 20px 0px",
                     }}
                   >
-                    New Promotion
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/company/promotions"
-                    varaint="text"
-                    sx={{ padding: "0px" }}
+                    {response.response}
+                  </Alert>
+                </Grow>
+              )}
+              <form onSubmit={handleSubmit} noValidate autoComplete="off">
+                <FormikProvider value={formikbag}>
+                  <Box
+                    sx={{
+                      "& > :not(style)": {
+                        margin: "8px 0px",
+                      },
+                    }}
                   >
-                    Go Back
-                  </Button>
-                </Box>
+                    <FastField
+                      as={TextField}
+                      id="title"
+                      label="Title"
+                      value={values.title}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      helperText={touched.title ? errors.title : ""}
+                      error={touched.title && Boolean(errors.title)}
+                      size="small"
+                      variant="outlined"
+                      fullWidth
+                    />
 
-                <Divider orientation="horizontal" flexItem />
-
-                <Box
-                  sx={{
-                    padding: "20px",
-                  }}
-                >
-                  {response && (
-                    <Grow in timeout={500}>
-                      <Alert
-                        elevation={1}
-                        severity={
-                          response.type === "error" ? "error" : "success"
-                        }
-                        sx={{
-                          margin: "0px 0px 20px 0px",
-                        }}
+                    <Stack
+                      direction="row"
+                      spacing={2}
+                      sx={{ marginBottom: "16px !important" }}
+                    >
+                      <FastField
+                        as={TextField}
+                        select
+                        id="duration"
+                        label="Duration"
+                        value={values.duration}
+                        onChange={customHandleChange}
+                        onBlur={handleBlur("duration")}
+                        helperText={touched.duration ? errors.duration : ""}
+                        error={touched.duration && Boolean(errors.duration)}
+                        size="small"
+                        variant="outlined"
+                        fullWidth
                       >
-                        {response.response}
-                      </Alert>
-                    </Grow>
-                  )}
-                  <form onSubmit={handleSubmit} noValidate autoComplete="off">
-                    <FormikProvider value={formikbag}>
-                      <Box
+                        {duration.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </FastField>
+
+                      <FastField
+                        as={TextField}
+                        id="cost"
+                        label="Estimated Cost"
+                        value={values.cost}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        helperText={touched.cost ? errors.cost : ""}
+                        error={touched.cost && Boolean(errors.cost)}
+                        size="small"
+                        variant="outlined"
+                        fullWidth
+                        InputProps={{ readOnly: true }}
+                      />
+                    </Stack>
+                    <Divider sx={{ margin: "20px 10px !important" }} flexItem />
+                    <Stack direction="row" justifyContent="flex-end">
+                      <LoadingButton
+                        type="submit"
+                        disabled={isSubmitting}
+                        loading={isSubmitting}
+                        variant="contained"
+                        size="large"
                         sx={{
-                          "& > :not(style)": {
-                            margin: "8px 0px",
-                          },
+                          padding: "10px 40px",
+
+                          background: "#3a7af3",
                         }}
+                        endIcon={<SaveIcon />}
+                        loadingPosition="end"
                       >
-                        <FastField
-                          as={TextField}
-                          id="title"
-                          label="Title"
-                          value={values.title}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          helperText={touched.title ? errors.title : ""}
-                          error={touched.title && Boolean(errors.title)}
-                          size="small"
-                          variant="outlined"
-                          fullWidth
-                        />
-
-                        <Stack
-                          direction="row"
-                          spacing={2}
-                          sx={{ marginBottom: "16px !important" }}
-                        >
-                          <FastField
-                            as={TextField}
-                            select
-                            id="duration"
-                            label="Duration"
-                            value={values.duration}
-                            onChange={customHandleChange}
-                            onBlur={handleBlur("duration")}
-                            helperText={touched.duration ? errors.duration : ""}
-                            error={touched.duration && Boolean(errors.duration)}
-                            size="small"
-                            variant="outlined"
-                            fullWidth
-                          >
-                            {duration.map((option) => (
-                              <MenuItem key={option.value} value={option.value}>
-                                {option.label}
-                              </MenuItem>
-                            ))}
-                          </FastField>
-
-                          <FastField
-                            as={TextField}
-                            id="cost"
-                            label="Estimated Cost"
-                            value={values.cost}
-                            onChange={handleChange}
-                            onBlur={handleBlur}
-                            helperText={touched.cost ? errors.cost : ""}
-                            error={touched.cost && Boolean(errors.cost)}
-                            size="small"
-                            variant="outlined"
-                            fullWidth
-                            InputProps={{ readOnly: true }}
-                          />
-                        </Stack>
-                        <Divider
-                          sx={{ margin: "20px 10px !important" }}
-                          flexItem
-                        />
-                        <Stack direction="row" justifyContent="flex-end">
-                          <LoadingButton
-                            type="submit"
-                            disabled={isSubmitting}
-                            loading={isSubmitting}
-                            variant="contained"
-                            size="large"
-                            sx={{
-                              padding: "10px 40px",
-
-                              background: "#3a7af3",
-                            }}
-                            endIcon={<SaveIcon />}
-                            loadingPosition="end"
-                          >
-                            Promote
-                          </LoadingButton>
-                        </Stack>
-                      </Box>
-                    </FormikProvider>
-                  </form>
-                </Box>
-              </Paper>
-            </Stack>
-          </Grow>
+                        Promote
+                      </LoadingButton>
+                    </Stack>
+                  </Box>
+                </FormikProvider>
+              </form>
+            </Box>
+          </Paper>
         </Stack>
-      </Box>
-    </Box>
+      </Grow>
+    </>
   );
 };
 

@@ -15,7 +15,7 @@ import {
 } from "@mui/material";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import TextField from "@mui/material/TextField";
-import { CompanyUserValidation } from "../../ValidationSchemas";
+import { CompanyUserValidation } from "../ValidationSchemas";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
@@ -23,30 +23,12 @@ import { useFormik } from "formik";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { useDispatch } from "react-redux";
-import { getCompanyUser, updateCompanyUser } from "./../../../actions/company";
+import { getCompanyUser, updateCompanyUser } from "../../actions/company";
 import { useSelector } from "react-redux";
-import { convertToBase64 } from "../../convertToBase64";
-import loadingUser from "../../../images/loading-user.png";
-import { useNavigate, useLocation } from "react-router-dom";
+import { convertToBase64 } from "../convertToBase64";
+import loadingUser from "../../images/loading-user.png";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-
-// async function uploadImage(file) {
-//   // file from <input type="file">
-//   const data = new FormData();
-//   data.append("file", file);
-//   data.append("upload_preset", "dins1v04");
-
-//   const res = await fetch(
-//     `https://api.cloudinary.com/v1_1/dxe6wambc/image/upload`,
-//     {
-//       method: "POST",
-//       body: data,
-//     }
-//   ).then((img) => {});
-//   const img = await res.json();
-//   console.log(img);
-//   // Post `img.secure_url` to your server and save to MongoDB
-// }
 
 const EditProfile = () => {
   const [response, setresponse] = useState(null);
@@ -57,9 +39,6 @@ const EditProfile = () => {
   const [changePassword, setChangePassword] = useState(false);
 
   const dispatch = useDispatch();
-  const fileRef = useRef(null);
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     if (user) {
@@ -75,13 +54,15 @@ const EditProfile = () => {
           }
         });
     }
-
     setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [dispatch, location]);
+  }, [dispatch]);
 
   let companyUser = useSelector((state) => state.companyUser);
 
   //console.log(companyUser);
+
+  const fileRef = useRef(null);
+  const navigate = useNavigate();
 
   const {
     values,
@@ -92,16 +73,12 @@ const EditProfile = () => {
     handleBlur,
     handleSubmit,
     setFieldValue,
-    handleReset,
-    resetForm,
   } = useFormik({
     enableReinitialize: true,
     initialValues: { ...companyUser, updatePassword: changePassword },
 
     validationSchema: CompanyUserValidation,
-
     onSubmit: (values, { setSubmitting }) => {
-      //console.log(values);
       setresponse(null);
       setTimeout(() => {
         dispatch(updateCompanyUser(values))
@@ -113,11 +90,10 @@ const EditProfile = () => {
               });
             } else {
               //resetForm();
-
               const user = JSON.parse(localStorage.getItem("profile"));
               user.result["userImage"] = values.userImage;
               localStorage.setItem("profile", JSON.stringify(user));
-              navigate("/company/profile");
+              navigate("/admin/profile");
               setresponse({
                 type: "success",
                 response: "Profile Updated Successfully!",
@@ -135,12 +111,6 @@ const EditProfile = () => {
             });
             setSubmitting(false);
           });
-
-        //setSubmitting(false);
-        //console.log(values);
-        //   // submit to the server
-        //   // handleReset();
-        //   alert(JSON.stringify(values, null, 2));
       }, 200);
     },
   });
@@ -175,7 +145,6 @@ const EditProfile = () => {
           Edit Profile
         </Typography>
       </Box>
-
       <Divider orientation="horizontal" flexItem />
       {companyUser.email !== "" ? (
         <form onSubmit={handleSubmit} noValidate autoComplete="off">

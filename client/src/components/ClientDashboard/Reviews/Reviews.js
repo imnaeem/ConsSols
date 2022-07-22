@@ -8,15 +8,11 @@ import {
   Typography,
   LinearProgress,
 } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
-import styled from "@emotion/styled";
-import LeftSidebar from "../LeftSidebar";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectsToReview } from "../../../actions/client";
-import { Link } from "react-router-dom";
 import Review from "./Review";
 import LazyLoad from "react-lazyload";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 const Reviews = () => {
@@ -37,89 +33,69 @@ const Reviews = () => {
   const projects = reviewProjects.projects;
   //console.log(projects);
   return (
-    <Box
-      sx={{
-        background: "#f5f5f5",
-      }}
-    >
+    <Stack sx={{ width: "100%" }} flex={1}>
       <Helmet>
         <title>Projects To Review</title>
       </Helmet>
-      <Box
-        sx={{
-          margin: "0px 45px",
-          padding: "30px 15px",
-        }}
-      >
-        <Stack
-          direction="row"
-          justifyContent="space-around"
-          spacing={3}
-          alignItems="flex-start"
+      <Paper>
+        <Box
+          sx={{
+            padding: "15px 20px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          <LeftSidebar />
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: "20px",
+            }}
+          >
+            Projects To Review
+          </Typography>
+          <Button
+            component="a"
+            href="/client/view-all-reviews"
+            // component={Link}
+            // to="/client/view-all-reviews"
+            variant="contained"
+          >
+            View All Review
+          </Button>
+        </Box>
 
-          <Stack flex={1}>
-            <Paper>
-              <Box
+        <Divider orientation="horizontal" flexItem />
+
+        {reviewProjects.fetched ? (
+          <Box>
+            {projects.length > 0 ? (
+              <Stack
+                direction="column"
+                spacing={3}
                 sx={{
-                  padding: "15px 20px",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
+                  padding: "20px",
                 }}
               >
-                <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "20px",
-                  }}
-                >
-                  Projects To Review
-                </Typography>
-                <Button
-                  component="a"
-                  href="/client/view-all-reviews"
-                  variant="contained"
-                >
-                  View All Review
-                </Button>
+                {projects.map((project, index) => (
+                  <LazyLoad key={index} height={400}>
+                    <Review project={project} />
+                  </LazyLoad>
+                ))}
+              </Stack>
+            ) : (
+              <Box sx={{ padding: "20px", textAlign: "center" }}>
+                <Typography>No Projects Found to review</Typography>
               </Box>
-
-              <Divider orientation="horizontal" flexItem />
-
-              {reviewProjects.fetched ? (
-                <Box>
-                  {projects.length > 0 ? (
-                    <Stack
-                      direction="column"
-                      spacing={3}
-                      sx={{
-                        padding: "20px",
-                      }}
-                    >
-                      {projects.map((project, index) => (
-                        <LazyLoad key={index} height={400}>
-                          <Review project={project} />
-                        </LazyLoad>
-                      ))}
-                    </Stack>
-                  ) : (
-                    <Box sx={{ padding: "20px", textAlign: "center" }}>
-                      <Typography>No Projects Found to review</Typography>
-                    </Box>
-                  )}
-                </Box>
-              ) : (
-                <Box sx={{ padding: "20px" }}>
-                  <LinearProgress />
-                </Box>
-              )}
-            </Paper>
-          </Stack>
-        </Stack>
-      </Box>
-    </Box>
+            )}
+          </Box>
+        ) : (
+          <Box sx={{ padding: "20px" }}>
+            <LinearProgress />
+          </Box>
+        )}
+      </Paper>
+    </Stack>
   );
 };
 
