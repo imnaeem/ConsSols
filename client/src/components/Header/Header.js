@@ -85,14 +85,13 @@ const Header = () => {
   }
 
   const menuItemClick = (event) => {
-    //console.log(event.target.getAttribute("id"));
-    handleCloseUserMenu();
     if (event.target.getAttribute("id") === "logout") {
       logout();
     }
     if (event.target.getAttribute("id") === "dashboard") {
       navigate(dashboardLink);
     }
+    handleCloseUserMenu();
   };
 
   return (
