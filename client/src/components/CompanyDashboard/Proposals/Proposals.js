@@ -79,7 +79,7 @@ const Proposals = () => {
               sx={{
                 borderBottom: 1,
                 borderColor: "divider",
-                padding: "10px 20px",
+                padding: { xs: "10px 0px", lg: "10px 20px" },
               }}
             >
               <TabList
