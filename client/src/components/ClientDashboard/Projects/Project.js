@@ -243,27 +243,24 @@ const Project = ({ project }) => {
               </Button>
             </Stack>
 
-            <Box>
-              <Button
-                disabled={status === "active" ? false : true}
-                id="closeProject"
-                variant="outlined"
-                onClick={handleOpen}
-                fullWidth
-              >
-                {closeButton}
-              </Button>
-            </Box>
-            <Box>
-              <Button
-                id="viewProposals"
-                variant="contained"
-                onClick={handleViewProposals}
-                fullWidth
-              >
-                View Proposals
-              </Button>
-            </Box>
+            <Button
+              disabled={status === "active" ? false : true}
+              id="closeProject"
+              variant="outlined"
+              onClick={handleOpen}
+              fullWidth
+            >
+              {closeButton}
+            </Button>
+
+            <Button
+              id="viewProposals"
+              variant="contained"
+              onClick={handleViewProposals}
+              fullWidth
+            >
+              View Proposals
+            </Button>
           </Stack>
           <Dialog
             fullScreen={fullScreen}
