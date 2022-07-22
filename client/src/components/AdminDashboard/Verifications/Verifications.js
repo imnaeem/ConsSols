@@ -39,6 +39,7 @@ const Verifications = () => {
             component="img"
             src={ComingSoon}
             sx={{
+              width: "100%",
               maxHeight: "400px",
               maxWidth: "400px",
               verticalAlign: "middle",
