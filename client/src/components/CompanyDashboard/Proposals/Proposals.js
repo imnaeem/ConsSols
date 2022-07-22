@@ -120,6 +120,7 @@ const Proposals = () => {
                     padding: "14px 20px",
                     marginBottom: "20px",
                     border: "2px solid #3a7af3",
+                    display: { xs: "none", lg: "block" },
                   }}
                 >
                   <Stack

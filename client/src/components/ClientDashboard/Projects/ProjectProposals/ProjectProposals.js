@@ -1,28 +1,25 @@
-import { React, useEffect, useState, useUpdateEffect } from "react";
+import { React, useEffect, useState } from "react";
 import {
   Box,
   Paper,
   Stack,
   Typography,
   Tab,
-  Button,
   LinearProgress,
 } from "@mui/material";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import { tabsClasses } from "@mui/material/Tabs";
 
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { useSelector, shallowEqual } from "react-redux";
 import LazyLoad from "react-lazyload";
 
 import ProjectProposal from "./ProjectProposal";
-import {
-  getClientProjects,
-  getProjectProposals,
-} from "../../../../actions/client";
+import { getProjectProposals } from "../../../../actions/client";
 import { Helmet } from "react-helmet";
 
 const ProjectProposals = (props) => {
@@ -61,7 +58,7 @@ const ProjectProposals = (props) => {
     setValue(newValue);
   };
   return (
-    <Stack flex={1}>
+    <Stack sx={{ width: "100%" }} flex={1}>
       <Helmet>
         <title>Project Proposals</title>
       </Helmet>
@@ -72,13 +69,24 @@ const ProjectProposals = (props) => {
               sx={{
                 borderBottom: 1,
                 borderColor: "divider",
-                padding: "10px 20px",
+                padding: { xs: "10px 0px", sm: "10px 20px" },
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
               }}
             >
-              <TabList onChange={handleChange}>
+              <TabList
+                variant="scrollable"
+                scrollButtons="auto"
+                allowScrollButtonsMobile
+                sx={{
+                  width: "100%",
+                  [`& .${tabsClasses.scrollButtons}`]: {
+                    "&.Mui-disabled": { opacity: 0.3 },
+                  },
+                }}
+                onChange={handleChange}
+              >
                 <Tab
                   label="All Proposals"
                   value="1"

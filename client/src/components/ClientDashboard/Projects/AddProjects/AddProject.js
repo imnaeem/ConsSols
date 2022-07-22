@@ -125,7 +125,12 @@ const AddPortfolio = () => {
       <Helmet>
         <title>Add Project</title>
       </Helmet>
-      <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
+      <Grow
+        sx={{ width: "100%" }}
+        in
+        timeout={400}
+        style={{ transformOrigin: "0 0 0" }}
+      >
         <Stack flex={1}>
           <Paper>
             <Box

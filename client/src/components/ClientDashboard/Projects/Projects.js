@@ -67,7 +67,7 @@ const Proposals = () => {
               sx={{
                 borderBottom: 1,
                 borderColor: "divider",
-                padding: { xs: "10px 0px", lg: "10px 20px" },
+                padding: { xs: "10px 0px", sm: "10px 20px" },
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: {
@@ -78,15 +78,15 @@ const Proposals = () => {
               }}
             >
               <TabList
+                variant="scrollable"
+                scrollButtons="auto"
+                allowScrollButtonsMobile
                 sx={{
                   width: "100%",
                   [`& .${tabsClasses.scrollButtons}`]: {
                     "&.Mui-disabled": { opacity: 0.3 },
                   },
                 }}
-                variant="scrollable"
-                scrollButtons="auto"
-                allowScrollButtonsMobile
                 onChange={handleChange}
               >
                 <Tab
@@ -126,6 +126,7 @@ const Proposals = () => {
                     padding: "14px 20px",
                     marginBottom: "20px",
                     border: "2px solid #3a7af3",
+                    display: { xs: "none", lg: "block" },
                   }}
                 >
                   <Stack

@@ -69,7 +69,6 @@ const Header = () => {
     dispatch({ type: "LOGOUT" });
     setUser(null);
     window.location.replace("/");
-    //navigate("/", { replace: true });
   };
 
   let dashboardLink = "#";

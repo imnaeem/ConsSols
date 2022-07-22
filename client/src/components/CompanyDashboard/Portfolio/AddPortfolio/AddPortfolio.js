@@ -130,7 +130,7 @@ const AddPortfolio = () => {
         <title>Add Portfolio</title>
       </Helmet>
       <Grow in timeout={400} style={{ transformOrigin: "0 0 0" }}>
-        <Stack flex={1}>
+        <Stack sx={{ width: "100%" }} flex={1}>
           <Paper>
             <Box
               sx={{
