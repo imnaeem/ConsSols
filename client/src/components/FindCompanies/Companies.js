@@ -12,7 +12,7 @@ import {
 
 import { makeStyles } from "@mui/styles";
 
-import Contact from "./../Homepage/Contact";
+import Contact from "../homepage/Contact";
 import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCompanies } from "../../actions/companies";

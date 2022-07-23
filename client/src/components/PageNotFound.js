@@ -1,7 +1,7 @@
 import React from "react";
 import { Grow, Box, Paper } from "@mui/material";
 import NotFoundImage from "../images/404.png";
-import Contact from "./Homepage/Contact";
+import Contact from "./homepage/Contact";
 import { Helmet } from "react-helmet";
 
 const PageNotFound = () => {

@@ -12,7 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import Projects from "./Projects";
-import Contact from "./../Homepage/Contact";
+import Contact from "../homepage/Contact";
 import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProject, getProjectsForCompany } from "../../actions/projects";

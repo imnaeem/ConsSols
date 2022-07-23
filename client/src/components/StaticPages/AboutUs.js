@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 import LocalPoliceIcon from "@mui/icons-material/LocalPolice";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import VpnLockIcon from "@mui/icons-material/VpnLock";
-import Contact from "../Homepage/Contact";
+import Contact from "../homepage/Contact";
 import { Helmet } from "react-helmet";
 
 const AboutUs = () => {

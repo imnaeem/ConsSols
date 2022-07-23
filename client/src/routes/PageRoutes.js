@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Companies from "../components/FindCompanies/Companies";
 import Company from "../components/Company/Company";
-import Homepage from "../components/Homepage/Homepage";
+import Homepage from "../components/homepage/Homepage";
 import SignIn from "../components/Auth/SignIn";
 import SignUp from "../components/Auth/SignUp";
 import ForgetPassword from "../components/Auth/ForgetPassword";
