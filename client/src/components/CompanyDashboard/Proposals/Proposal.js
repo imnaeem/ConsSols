@@ -16,7 +16,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {
@@ -28,7 +28,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 const Proposal = ({ proposal }) => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("lg"));
-  const { createdAt, rate, message, projectId, status, _id } = proposal;
+  const { createdAt, rate, message, projectId, status } = proposal;
 
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const [open, setOpen] = useState(false);

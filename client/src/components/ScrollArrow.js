@@ -15,7 +15,7 @@ export default function ScrollTop(props) {
 
   const handleClick = (event) => {
     const anchor = (event.target.ownerDocument || document).querySelector(
-      "#back-to-top-anchor"
+      "#back-to-top"
     );
     if (anchor) {
       anchor.scrollIntoView({

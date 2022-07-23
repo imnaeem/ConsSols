@@ -3,7 +3,11 @@ import { Box, Paper, Typography, Stack, Divider, Button } from "@mui/material";
 
 const RightSidebar = () => {
   return (
-    <Stack direction="column" flex={1}>
+    <Stack
+      direction="column"
+      flex={1}
+      sx={{ width: "100%", minWidth: "315px" }}
+    >
       <Stack direction="column" spacing={2}>
         <Paper elevation={2}>
           <Typography

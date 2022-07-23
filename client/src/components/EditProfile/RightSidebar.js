@@ -1,17 +1,13 @@
 import React from "react";
 import { Box, Paper, Typography, Stack, Divider, Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
-import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
 
 const RightSidebar = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const logout = () => {
     dispatch({ type: "LOGOUT" });
     window.location.replace("/");
-    //navigate("/");
   };
   return (
     <Stack sx={{ width: "100%" }} direction="column" flex={1}>

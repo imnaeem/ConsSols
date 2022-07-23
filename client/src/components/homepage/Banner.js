@@ -3,7 +3,7 @@ import { Box, Divider, Button, Stack } from "@mui/material";
 import { Card } from "@mui/material";
 import { Typography } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
-import { theme } from "./../../theme";
+import { theme } from "../../theme";
 import CounterData from "./CounterData";
 import Counter from "./Counter";
 import { Link } from "react-router-dom";
@@ -173,7 +173,7 @@ const Banner = () => {
               alignItems="center"
               spacing={{ xs: 0, sm: 0, md: 0, lg: 2, xl: 2 }}
               sx={{
-                [theme.breakpoints.down("lg")]: {
+                [theme.breakpoints.down("md")]: {
                   flexDirection: "column",
                   justifyContent: "flex-start",
 

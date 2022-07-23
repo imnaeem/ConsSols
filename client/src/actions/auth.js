@@ -3,14 +3,13 @@ import * as api from "../api";
 export const signup = (values) => async (dispatch) => {
   try {
     const { data } = await api.signUp(values);
-
     dispatch({ type: "SIGNUP", data });
   } catch (error) {
     return error;
   }
 };
 
-export const signin = (values, navigate) => async (dispatch) => {
+export const signin = (values) => async (dispatch) => {
   try {
     const { data } = await api.signIn(values);
 
@@ -18,16 +17,13 @@ export const signin = (values, navigate) => async (dispatch) => {
 
     if (data.result.type === "company") {
       window.location.replace("/company/dashboard");
-      //navigate("/company/dashboard", { replace: true });
     } else if (data.result.type === "client") {
       window.location.replace("/client/dashboard");
-      // navigate("/client/dashboard", { replace: true });
     } else if (data.result.type === "admin") {
       window.location.replace("/admin/dashboard");
-      // navigate("/admin/dashboard", { replace: true });
     }
+    // return data;
   } catch (error) {
-    console.log(error);
     return error;
   }
 };

@@ -66,33 +66,22 @@ const SignIn = () => {
     onSubmit: (values, { setSubmitting }) => {
       setError(null);
       setTimeout(() => {
-        dispatch(signin(values, navigate))
+        dispatch(signin(values))
           .then((res) => {
-            setSubmitting(false);
             if (res) {
-              setError(res.response.data.message);
-              console.log(res.response.data.message);
-              emailInput.current.focus();
-            } else {
-              //const user =
-              // localStorage.setItem("profile", JSON.stringify({ ...action?.data }));
-              //   resetForm();
-              //console.log("heelo");
-              //<Navigate to="/dashboard" replace={true} />;
-              //console.log("heelo");
-              //navigate("/company/dashboard");
+              setSubmitting(false);
+              if (res.response.data) {
+                setError(res.response.data.message);
+                emailInput.current.focus();
+              } else {
+                setError(res.message);
+              }
             }
           })
-          .catch(() => {
-            setError("Server Error. Please try again!");
+          .catch((res) => {
+            setError("Something went wrong, Please try again!");
+            setSubmitting(false);
           });
-
-        // console.log(values);
-
-        //   console.log(values);
-        //   // submit to the server
-        //   // handleReset();
-        //   alert(JSON.stringify(values, null, 2));
       }, 400);
     },
   });

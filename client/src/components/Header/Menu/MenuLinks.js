@@ -1,4 +1,20 @@
-const DrawerLinks = [
+const DesktopLinks = [
+  {
+    url: "/find-companies",
+    text: "Find Companies",
+  },
+  {
+    url: "/find-projects",
+    text: "Find Projects",
+  },
+
+  {
+    url: "/about-us",
+    text: "Why ConsSols",
+  },
+];
+
+const MobileLinks = [
   {
     url: "/",
     text: "Home",
@@ -30,4 +46,4 @@ const DrawerLinks = [
   },
 ];
 
-export default DrawerLinks;
+export { DesktopLinks, MobileLinks };

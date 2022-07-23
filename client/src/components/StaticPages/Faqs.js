@@ -12,7 +12,7 @@ import {
   Box,
   Divider,
 } from "@mui/material";
-import Contact from "../homepage/Contact";
+import Contact from "../Homepage/Contact";
 
 const Faqs = () => {
   return (

@@ -27,7 +27,6 @@ const LinksSection = (props) => {
       sx={{
         width: {
           xs: "100%",
-          lg: "250px",
         },
       }}
     >

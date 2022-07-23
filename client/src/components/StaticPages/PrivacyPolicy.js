@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, Stack, Box } from "@mui/material";
 import { Typography } from "@mui/material";
-import Contact from "../homepage/Contact";
+import Contact from "../Homepage/Contact";
 import { Helmet } from "react-helmet";
 
 const PrivacyPolicy = () => {

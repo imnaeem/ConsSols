@@ -1,18 +1,16 @@
 import { React, useState, useEffect } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Companies from "../components/FindCompanies/Companies";
 import Company from "../components/Company/Company";
-import Homepage from "../components/homepage/Homepage";
-
+import Homepage from "../components/Homepage/Homepage";
 import SignIn from "../components/Auth/SignIn";
 import SignUp from "../components/Auth/SignUp";
 import ForgetPassword from "../components/Auth/ForgetPassword";
 import CompanyDashboard from "../components/CompanyDashboard/CompanyDashboard";
-
 import ClientDashboard from "../components/ClientDashboard/ClientDashboard";
-
 import FindProjects from "../components/FindProjects/FindProjects";
+
 import {
   ProtectedRoutes,
   AuthRoutes,
@@ -26,12 +24,9 @@ import AdminDashboard from "./../components/AdminDashboard/AdminDashboard";
 import PageNotFound from "./../components/PageNotFound";
 
 const PageRoutes = () => {
-  const navigate = useNavigate();
-
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
 
   useEffect(() => {
-    //const token = user?.token;
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, []);
 

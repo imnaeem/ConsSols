@@ -45,8 +45,7 @@ const Footer = () => {
             flexItem
             sx={{
               display: { xs: "none", lg: "block" },
-
-              margin: "40px 80px 20px 80px",
+              margin: "40px 95px 20px 95px",
             }}
           />
 

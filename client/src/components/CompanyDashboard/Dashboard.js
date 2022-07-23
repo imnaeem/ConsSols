@@ -36,7 +36,7 @@ const Dashboard = () => {
         direction="column"
         flex={2.3}
         spacing={3}
-        sx={{ maxWidth: { xl: "750px", lg: "750px" } }}
+        sx={{ maxWidth: { xl: "750px", lg: "750px" }, width: "100%" }}
       >
         <Helmet>
           <title>Company Dashboard</title>
@@ -213,11 +213,7 @@ const Dashboard = () => {
           </Box>
         </Paper>
       </Stack>
-      <RightSidebar
-        sx={{
-          minWidth: "315px",
-        }}
-      />
+      <RightSidebar />
     </>
   );
 };

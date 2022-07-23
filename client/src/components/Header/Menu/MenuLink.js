@@ -11,11 +11,13 @@ const MenuLink = (props) => {
     <ListItem disablePadding sx={{ ":hover": { color: "#3a7af3" } }}>
       <ListItemButton
         selected={hightlight}
-        sx={{ padding: "9px" }}
+        sx={{ padding: { xs: "9px", md: "6px 8px" }, borderRadius: "5px" }}
         component={Link}
         to={url}
         onClick={() => {
-          setIsDrawerOpen(false);
+          if (setIsDrawerOpen) {
+            setIsDrawerOpen(false);
+          }
         }}
       >
         <ListItemText
@@ -24,7 +26,9 @@ const MenuLink = (props) => {
           sx={{
             color: hightlight ? "#3a7af3" : "#333",
             fontSize: "16px",
-            fontWeight: "bold",
+            fontWeight: "600",
+            margin: "0px",
+            width: "max-content",
           }}
         />
       </ListItemButton>
