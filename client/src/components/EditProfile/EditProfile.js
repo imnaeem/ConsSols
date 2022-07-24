@@ -11,7 +11,6 @@ import {
   Grow,
   Alert,
   LinearProgress,
-  FormControlLabel,
 } from "@mui/material";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import TextField from "@mui/material/TextField";
@@ -23,10 +22,11 @@ import { useFormik } from "formik";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SaveIcon from "@mui/icons-material/Save";
 import { useDispatch } from "react-redux";
-import { getCompanyUser, updateCompanyUser } from "../../actions/company";
+import { getUserProfile, updateUserProfile } from "../../actions/profile";
 import { useSelector } from "react-redux";
-import { convertToBase64 } from "../convertToBase64";
+import { uploadImage } from "../UploadImage";
 import loadingUser from "../../images/loading-user.png";
+import loadingIcon from "../../images/loading.gif";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -34,15 +34,14 @@ const EditProfile = (props) => {
   const [response, setresponse] = useState(null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [showPassword, setShowPassword] = useState(false);
-  const handleShowPassword = () => setShowPassword(!showPassword);
-
   const [changePassword, setChangePassword] = useState(false);
+  const handleShowPassword = () => setShowPassword(!showPassword);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (user) {
-      dispatch(getCompanyUser(user.result._id))
+      dispatch(getUserProfile(user.result._id))
         .then((res) => {
           if (res) {
             console.log(res);
@@ -57,9 +56,9 @@ const EditProfile = (props) => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [dispatch]);
 
-  let companyUser = useSelector((state) => state.companyUser);
+  let userProfile = useSelector((state) => state.userProfile);
 
-  //console.log(companyUser);
+  //console.log(userProfile);
 
   const fileRef = useRef(null);
   const navigate = useNavigate();
@@ -75,51 +74,74 @@ const EditProfile = (props) => {
     setFieldValue,
   } = useFormik({
     enableReinitialize: true,
-    initialValues: { ...companyUser, updatePassword: changePassword },
+    initialValues: { ...userProfile, updatePassword: changePassword },
 
     validationSchema: CompanyUserValidation,
     onSubmit: (values, { setSubmitting }) => {
       setresponse(null);
-      setTimeout(() => {
-        dispatch(updateCompanyUser(values))
-          .then((res) => {
-            if (res) {
-              setresponse({
-                type: "error",
-                response: res.response.data.message,
-              });
-            } else {
-              //resetForm();
-              const user = JSON.parse(localStorage.getItem("profile"));
-              user.result["userImage"] = values.userImage;
-              localStorage.setItem("profile", JSON.stringify(user));
-              navigate(`/${props.type}/profile`);
-              setresponse({
-                type: "success",
-                response: "Profile Updated Successfully!",
-              });
-              setTimeout(() => {
-                setresponse(null);
-              }, 5000);
-            }
-            setSubmitting(false);
-          })
-          .catch(() => {
+      dispatch(updateUserProfile(values))
+        .then((res) => {
+          if (res) {
             setresponse({
               type: "error",
-              response: "Server Error. Please try again!",
+              response: res.response.data.message,
             });
-            setSubmitting(false);
+          } else {
+            //resetForm();
+            setresponse({
+              type: "success",
+              response: "Profile Updated Successfully!",
+            });
+            setTimeout(() => {
+              setresponse(null);
+            }, 5000);
+          }
+          setSubmitting(false);
+        })
+        .catch(() => {
+          setresponse({
+            type: "error",
+            response: "Server Error. Please try again!",
           });
-      }, 200);
+          setSubmitting(false);
+        });
     },
   });
 
   const handleFileUpload = async (e) => {
     if (e.target.files.length > 0) {
       const file = e.target.files[0];
-      const base64 = await convertToBase64(file);
-      setFieldValue("userImage", base64);
+      setFieldValue("userImage", loadingIcon);
+      uploadImage(file)
+        .then((res) => {
+          dispatch(
+            updateUserProfile({ email: values.email, userImage: res })
+          ).then(() => {
+            const user = JSON.parse(localStorage.getItem("profile"));
+            user.result["userImage"] = res;
+            localStorage.setItem("profile", JSON.stringify(user));
+            navigate(`/${props.type}/profile`);
+            setFieldValue("userImage", res);
+            setresponse({
+              type: "success",
+              response: "Image Updated Successfully",
+            });
+
+            setTimeout(() => {
+              setresponse(null);
+            }, 5000);
+          });
+        })
+        .catch((err) => {
+          setFieldValue("userImage", values.userImage);
+          setresponse({
+            type: "error",
+            response: err,
+          });
+          setTimeout(() => {
+            setresponse(null);
+          }, 5000);
+        });
     }
   };
 
@@ -146,7 +168,7 @@ const EditProfile = (props) => {
         </Typography>
       </Box>
       <Divider orientation="horizontal" flexItem />
-      {companyUser.email !== "" ? (
+      {userProfile.email !== "" ? (
         <form onSubmit={handleSubmit} noValidate autoComplete="off">
           <Box sx={{}}>
             <Stack

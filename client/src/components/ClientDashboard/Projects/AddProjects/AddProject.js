@@ -23,11 +23,14 @@ import SaveIcon from "@mui/icons-material/Save";
 import { useFormik, FormikProvider, FastField } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import { convertToBase64 } from "../../../convertToBase64";
+import { uploadImage } from "../../../UploadImage";
 
 const AddPortfolio = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const [response, setresponse] = useState(null);
+
+  const [previewImage, setPreviewImage] = useState(null);
 
   const fileRef = useRef(null);
   const [uploadImageName, setUploadImageName] = useState("");
@@ -59,42 +62,56 @@ const AddPortfolio = () => {
     onSubmit: (values, { setSubmitting }) => {
       console.log(values);
       setresponse(null);
-      setTimeout(() => {
-        dispatch(cleintAddProject(values))
-          .then((res) => {
-            window.scroll({
-              top: 0,
-              left: 0,
-              behavior: "smooth",
-            });
-            if (res) {
+      uploadImage(previewImage)
+        .then((res) => {
+          // setFieldValue("projectImage", res);
+          values.projectImage = res;
+
+          dispatch(cleintAddProject(values))
+            .then((res) => {
+              window.scroll({
+                top: 0,
+                left: 0,
+                behavior: "smooth",
+              });
+              if (res) {
+                setresponse({
+                  type: "error",
+                  response: res.response.data.message,
+                });
+              } else {
+                resetForm();
+
+                setresponse({
+                  type: "success",
+                  response:
+                    "Project Added Successfully! Redirecting to Projects...",
+                });
+                setTimeout(() => {
+                  setresponse(null);
+                  navigate("/client/projects");
+                }, 4000);
+              }
+              setSubmitting(false);
+            })
+            .catch(() => {
               setresponse({
                 type: "error",
-                response: res.response.data.message,
+                response: "Server Error. Please try again!",
               });
-            } else {
-              resetForm();
-
-              setresponse({
-                type: "success",
-                response:
-                  "Project Added Successfully! Redirecting to Projects...",
-              });
-              setTimeout(() => {
-                setresponse(null);
-                navigate("/client/projects");
-              }, 4000);
-            }
-            setSubmitting(false);
-          })
-          .catch(() => {
-            setresponse({
-              type: "error",
-              response: "Server Error. Please try again!",
+              setSubmitting(false);
             });
-            setSubmitting(false);
+        })
+        .catch((err) => {
+          setFieldValue("userImage", values.userImage);
+          setresponse({
+            type: "error",
+            response: err,
           });
-      }, 400);
+          setTimeout(() => {
+            setresponse(null);
+          }, 5000);
+        });
     },
   });
 
@@ -114,8 +131,8 @@ const AddPortfolio = () => {
   const handleFileUpload = async (e) => {
     if (e.target.files.length > 0) {
       const file = e.target.files[0];
-      const base64 = await convertToBase64(file);
-      setFieldValue("projectImage", base64);
+
+      setPreviewImage(file);
       setUploadImageName(e.target.files[0].name);
     }
   };
@@ -276,7 +293,7 @@ const AddPortfolio = () => {
                       </Button>
                     </Stack>
 
-                    {values.projectImage !== "" && (
+                    {previewImage && (
                       <Stack direction="row" spacing={1} alignItems="center">
                         <Box
                           sx={{
@@ -292,7 +309,7 @@ const AddPortfolio = () => {
                         >
                           <Box
                             component="img"
-                            src={values.projectImage}
+                            src={URL.createObjectURL(previewImage)}
                             sx={{
                               maxHeight: "50px",
                               maxWidth: "50px",

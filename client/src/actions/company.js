@@ -20,26 +20,6 @@ export const updateCompanyProfile = (company) => async (dispatch) => {
   }
 };
 
-export const getCompanyUser = (id) => async (dispatch) => {
-  try {
-    const { data } = await api.getCompanyUser(id);
-    // console.log(data);
-    dispatch({ type: "GET_COMPANY_USER", payload: data });
-  } catch (error) {
-    return error;
-  }
-};
-
-export const updateCompanyUser = (user) => async (dispatch) => {
-  try {
-    const { data } = await api.updateCompanyUser(user);
-
-    dispatch({ type: "UPDATE_COMPANY_PROFILE", payload: data });
-  } catch (error) {
-    return error;
-  }
-};
-
 export const addCompanyPortfolio = (portfolio) => async (dispatch) => {
   try {
     const { data } = await api.addCompanyPortfolio(portfolio);

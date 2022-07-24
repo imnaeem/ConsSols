@@ -29,7 +29,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDispatch } from "react-redux";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useNavigate } from "react-router-dom";
-import loadingImge from "../../images/loading-image.png";
 
 const useStyles = {
   detailsBox: {
@@ -47,6 +46,9 @@ const useStyles = {
     marginLeft: "10px",
   },
 };
+
+const loadingImage =
+  "https://res.cloudinary.com/dxe6wambc/image/upload/v1658663558/fdz6ekdccu6dpwedvqzq.png";
 
 const Projects = ({ project }) => {
   const { title, location, rate, createdAt, details, _id, projectImage } =
@@ -177,7 +179,7 @@ const Projects = ({ project }) => {
               >
                 <Box
                   component="img"
-                  src={projectImage === "" ? loadingImge : projectImage}
+                  src={projectImage === "" ? loadingImage : projectImage}
                   sx={{
                     maxHeight: "85px",
                     maxWidth: "85px",

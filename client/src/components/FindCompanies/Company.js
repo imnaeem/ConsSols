@@ -15,7 +15,6 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Rating from "@mui/material/Rating";
 import CampaignIcon from "@mui/icons-material/Campaign";
-import loadingImage from "../../images/loading-image.png";
 
 const useStyles = {
   detailsBox: {
@@ -33,6 +32,9 @@ const useStyles = {
     marginLeft: "10px",
   },
 };
+
+const loadingImage =
+  "https://res.cloudinary.com/dxe6wambc/image/upload/v1658663558/fdz6ekdccu6dpwedvqzq.png";
 
 const Company = ({ company }) => {
   const {
@@ -112,6 +114,7 @@ const Company = ({ company }) => {
                     border: "1px solid #dce2ee",
                     borderRadius: "5px",
                     verticalAlign: "middle",
+                    backgroundImage: "url(loadingImage)",
                   }}
                 >
                   <Box

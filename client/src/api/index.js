@@ -2,7 +2,8 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 const API = axios.create({
-  baseURL: "https://conssols.herokuapp.com/api",
+  // baseURL: "https://conssols.herokuapp.com/api",
+  baseURL: "http://localhost:5000/api",
 });
 
 API.interceptors.request.use((req) => {
@@ -43,13 +44,13 @@ export const getCompanyProfile = (id) =>
 export const updateCompanyProfile = (updatedCompany) =>
   API.patch("/company/edit-company", updatedCompany);
 
-export const getCompanyUser = (id) =>
-  API.get("/company/profile", {
+export const getUserProfile = (id) =>
+  API.get("/user/profile", {
     params: {
       id,
     },
   });
-export const updateCompanyUser = (user) => API.patch("/company/profile", user);
+export const updateUserProfile = (user) => API.patch("/user/profile", user);
 
 export const sendProposal = (proposal) => API.post("/find-projects", proposal);
 

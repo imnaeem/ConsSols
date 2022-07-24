@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   userImage: "",
 };
 
-const companyUserReducer = (state = INITIAL_STATE, action) => {
+const UserProfileReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "GET_COMPANY_USER":
       action.payload["oldPassword"] = "";
@@ -23,4 +23,4 @@ const companyUserReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default companyUserReducer;
+export default UserProfileReducer;

@@ -36,7 +36,9 @@ import {
 } from "../../../actions/company";
 import { convertToBase64 } from "../../convertToBase64";
 import loadingImage from "../../../images/loading-image.png";
+import loadingIcon from "../../../images/loading.gif";
 import { Helmet } from "react-helmet";
+import { uploadImage } from "../../UploadImage";
 
 const EditCompany = () => {
   //const user = JSON.parse(localStorage.getItem("profile"));
@@ -75,8 +77,6 @@ const EditCompany = () => {
       setTimeout(() => {
         dispatch(updateCompanyProfile(values))
           .then((res) => {
-            //console.log(res);
-
             window.scroll({
               top: 0,
               left: 0,
@@ -125,8 +125,33 @@ const EditCompany = () => {
   const handleFileUpload = async (e) => {
     if (e.target.files.length > 0) {
       const file = e.target.files[0];
-      const base64 = await convertToBase64(file);
-      setFieldValue("companyImage", base64);
+      setFieldValue("companyImage", loadingIcon);
+      uploadImage(file)
+        .then((res) => {
+          dispatch(
+            updateCompanyProfile({ userId: values.userId, companyImage: res })
+          ).then(() => {
+            setFieldValue("companyImage", res);
+            setresponse({
+              type: "success",
+              response: "Image Updated Successfully",
+            });
+
+            setTimeout(() => {
+              setresponse(null);
+            }, 5000);
+          });
+        })
+        .catch((err) => {
+          setFieldValue("userImage", values.userImage);
+          setresponse({
+            type: "error",
+            response: err,
+          });
+          setTimeout(() => {
+            setresponse(null);
+          }, 5000);
+        });
     }
   };
 

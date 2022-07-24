@@ -39,6 +39,24 @@ const TextButton = styled(Button)(({ theme }) => ({
   fontWeight: "600",
 }));
 
+async function uploadImage(file) {
+  // file from <input type="file">
+  const data = new FormData();
+  data.append("file", file);
+  data.append("upload_preset", "dins1v04");
+
+  const res = await fetch(
+    `https://api.cloudinary.com/v1_1/dxe6wambc/image/upload`,
+    {
+      method: "POST",
+      body: data,
+    }
+  ).then((img) => {});
+  const img = await res.json();
+  console.log(img);
+  // Post `img.secure_url` to your server and save to MongoDB
+}
+
 const SignIn = () => {
   const emailInput = useRef(null);
   const [error, setError] = useState(null);
