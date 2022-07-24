@@ -114,7 +114,7 @@ const Company = ({ company }) => {
                     border: "1px solid #dce2ee",
                     borderRadius: "5px",
                     verticalAlign: "middle",
-                    backgroundImage: "url(loadingImage)",
+                    background: `transparent url(${loadingImage})`,
                   }}
                 >
                   <Box
