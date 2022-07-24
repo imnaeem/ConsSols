@@ -2,8 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 const API = axios.create({
-  // baseURL: "https://conssols.herokuapp.com/api",
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://conssols.herokuapp.com/api",
 });
 
 API.interceptors.request.use((req) => {
