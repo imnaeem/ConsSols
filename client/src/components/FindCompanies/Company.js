@@ -114,7 +114,6 @@ const Company = ({ company }) => {
                     border: "1px solid #dce2ee",
                     borderRadius: "5px",
                     verticalAlign: "middle",
-                    background: `transparent url(${loadingImage})`,
                   }}
                 >
                   <Box
@@ -124,6 +123,7 @@ const Company = ({ company }) => {
                       maxHeight: "85px",
                       maxWidth: "85px",
                       verticalAlign: "middle",
+                      background: `transparent url(${loadingImage})`,
                     }}
                   />
                 </Box>
