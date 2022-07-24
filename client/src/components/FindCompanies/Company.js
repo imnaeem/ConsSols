@@ -15,6 +15,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Rating from "@mui/material/Rating";
 import CampaignIcon from "@mui/icons-material/Campaign";
+import loading from "../../images/loading-image.png";
 
 const useStyles = {
   detailsBox: {
@@ -123,7 +124,7 @@ const Company = ({ company }) => {
                       maxHeight: "85px",
                       maxWidth: "85px",
                       verticalAlign: "middle",
-                      background: `transparent url(${loadingImage})`,
+                      background: `transparent url(${loading})`,
                     }}
                   />
                 </Box>
