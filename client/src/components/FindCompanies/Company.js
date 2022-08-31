@@ -15,7 +15,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Rating from "@mui/material/Rating";
 import CampaignIcon from "@mui/icons-material/Campaign";
-import loading from "../../images/loading-image.png";
+import { Link } from "react-router-dom";
 
 const useStyles = {
   detailsBox: {
@@ -130,9 +130,8 @@ const Company = ({ company }) => {
                 <Box>
                   <Button
                     variant="text"
-                    component="a"
-                    href={`/company-profile/${username}`}
-                    // onClick={viewCompany}
+                    component={Link}
+                    to={`/company-profile/${username}`}
                     sx={{
                       padding: "0px",
                       fontSize: "20px",
@@ -241,9 +240,8 @@ const Company = ({ company }) => {
               }}
             >
               <Button
-                component="a"
-                href={`/company-profile/${username}`}
-                // onClick={viewCompany}
+                component={Link}
+                to={`/company-profile/${username}`}
                 variant="contained"
                 size="large"
                 fullWidth
