@@ -46,24 +46,13 @@ const FindProjects = () => {
   const perPageProjects = pagedProjects.currentData();
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem("profile"))) {
-      if (
-        JSON.parse(localStorage.getItem("profile")).result.type === "company"
-      ) {
-        dispatch(
-          checkCompanyProfile(
-            JSON.parse(localStorage.getItem("profile")).result._id
-          )
-        ).then(() => {
-          dispatch(
-            getProjectsForCompany(
-              JSON.parse(localStorage.getItem("profile")).result._id
-            )
-          );
+    const user = JSON.parse(localStorage.getItem("profile"));
+    if (user) {
+      if (user.result.type === "company") {
+        dispatch(checkCompanyProfile(user.result._id)).then(() => {
+          dispatch(getProjectsForCompany(user.result._id));
         });
-      } else if (
-        JSON.parse(localStorage.getItem("profile")).result.type === "admin"
-      ) {
+      } else if (user.result.type === "admin") {
         dispatch(getAllProject());
       }
     } else dispatch(getAllProject());
