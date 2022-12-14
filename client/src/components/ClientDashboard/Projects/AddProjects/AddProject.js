@@ -16,13 +16,12 @@ import { Helmet } from "react-helmet";
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
 import { costs } from "./Dropdowns";
 import { clientProjectValidation } from "../../../ValidationSchemas";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { cleintAddProject } from "../../../../actions/client";
 import SaveIcon from "@mui/icons-material/Save";
 import { useFormik, FormikProvider, FastField } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-import { convertToBase64 } from "../../../convertToBase64";
 import { uploadImage } from "../../../UploadImage";
 
 const AddPortfolio = () => {
@@ -37,10 +36,6 @@ const AddPortfolio = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if (user) {
-      console.log(user.result._id);
-    }
-
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, []);
 
@@ -60,58 +55,96 @@ const AddPortfolio = () => {
     validationSchema: clientProjectValidation,
 
     onSubmit: (values, { setSubmitting }) => {
-      console.log(values);
+      // console.log(values);
       setresponse(null);
-      uploadImage(previewImage)
-        .then((res) => {
-          // setFieldValue("projectImage", res);
-          values.projectImage = res;
 
-          dispatch(cleintAddProject(values))
-            .then((res) => {
-              window.scroll({
-                top: 0,
-                left: 0,
-                behavior: "smooth",
-              });
-              if (res) {
+      if (previewImage) {
+        uploadImage(previewImage)
+          .then((res) => {
+            // setFieldValue("projectImage", res);
+            values.projectImage = res;
+
+            dispatch(cleintAddProject(values))
+              .then((res) => {
+                window.scroll({
+                  top: 0,
+                  left: 0,
+                  behavior: "smooth",
+                });
+                if (res) {
+                  setresponse({
+                    type: "error",
+                    response: res.response.data.message,
+                  });
+                } else {
+                  resetForm();
+
+                  setresponse({
+                    type: "success",
+                    response:
+                      "Project Added Successfully! Redirecting to Projects...",
+                  });
+                  setTimeout(() => {
+                    setresponse(null);
+                    navigate("/client/projects");
+                  }, 4000);
+                }
+                setSubmitting(false);
+              })
+              .catch(() => {
                 setresponse({
                   type: "error",
-                  response: res.response.data.message,
+                  response: "Server Error. Please try again!",
                 });
-              } else {
-                resetForm();
-
-                setresponse({
-                  type: "success",
-                  response:
-                    "Project Added Successfully! Redirecting to Projects...",
-                });
-                setTimeout(() => {
-                  setresponse(null);
-                  navigate("/client/projects");
-                }, 4000);
-              }
-              setSubmitting(false);
-            })
-            .catch(() => {
+                setSubmitting(false);
+              });
+          })
+          .catch((err) => {
+            setFieldValue("userImage", values.userImage);
+            setresponse({
+              type: "error",
+              response: err,
+            });
+            setTimeout(() => {
+              setresponse(null);
+            }, 5000);
+          });
+      } else {
+        dispatch(cleintAddProject(values))
+          .then((res) => {
+            window.scroll({
+              top: 0,
+              left: 0,
+              behavior: "smooth",
+            });
+            if (res) {
               setresponse({
                 type: "error",
-                response: "Server Error. Please try again!",
+                response: res.response.data.message,
               });
-              setSubmitting(false);
+            } else {
+              resetForm();
+
+              setresponse({
+                type: "success",
+                response:
+                  "Project Added Successfully! Redirecting to Projects...",
+              });
+              setTimeout(() => {
+                setresponse(null);
+                navigate("/client/projects");
+              }, 4000);
+            }
+            setSubmitting(false);
+          })
+          .catch(() => {
+            setresponse({
+              type: "error",
+              response: "Server Error. Please try again!",
             });
-        })
-        .catch((err) => {
-          setFieldValue("userImage", values.userImage);
-          setresponse({
-            type: "error",
-            response: err,
+            setSubmitting(false);
           });
-          setTimeout(() => {
-            setresponse(null);
-          }, 5000);
-        });
+      }
     },
   });
 

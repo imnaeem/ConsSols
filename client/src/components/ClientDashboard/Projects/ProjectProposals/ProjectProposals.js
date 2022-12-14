@@ -106,7 +106,6 @@ const ProjectProposals = (props) => {
                 <Box>
                   {projectProposals.map((proposal, index) => (
                     <LazyLoad key={index} height={50}>
-                      {console.log(projectProposals)}
                       <ProjectProposal
                         proposal={proposal}
                         projectStatus={state.status}

@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Stack, Typography, Button, Divider, Paper, Grow } from "@mui/material";
 import { Box } from "@mui/material";
 
@@ -19,8 +19,6 @@ const Project = ({ project }) => {
   const { title, location, rate, createdAt, details, status, _id } = project;
   const [viewProject, setOpenViewProject] = useState(false);
   const [closeProject, setOpenCloseProject] = useState(false);
-  const [viewProposals, setOpenviewProposals] = useState(false);
-  const [closingProject, setClosingProject] = useState(false);
   const [closeButton, setCloseButton] = useState(status);
 
   if (closeButton === "active") {
@@ -53,21 +51,16 @@ const Project = ({ project }) => {
 
   const handleClose = () => {
     setOpenViewProject(false);
-
     setOpenCloseProject(false);
-
-    setOpenviewProposals(false);
   };
 
   const closeThisProject = () => {
-    setCloseButton("Closing");
-    setClosingProject(true);
-    dispatch(closeClientProject({ id: _id })).then(() => {
-      setClosingProject(false);
-      setCloseButton("Project Closed");
-    });
+    setCloseButton(() => "Closing");
     setOpenCloseProject(false);
-    navigate("/client/projects", { replace: true });
+    dispatch(closeClientProject({ id: _id })).then(() => {
+      setCloseButton(() => "Project Closed");
+      navigate("/client/projects", { replace: true });
+    });
   };
 
   return (
@@ -244,7 +237,7 @@ const Project = ({ project }) => {
             </Stack>
 
             <Button
-              disabled={status === "active" ? false : true}
+              disabled={closeButton !== "active"}
               id="closeProject"
               variant="outlined"
               onClick={handleOpen}
