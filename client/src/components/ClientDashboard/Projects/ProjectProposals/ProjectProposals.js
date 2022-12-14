@@ -25,20 +25,15 @@ import { Helmet } from "react-helmet";
 const ProjectProposals = (props) => {
   const dispatch = useDispatch();
   const { state } = useLocation();
-  const location = useLocation();
 
   const [value, setValue] = useState("1");
 
-  const allProposals = useSelector(
-    (state) => state.projectProposals,
-    shallowEqual
-  );
+  const allProposals = useSelector((state) => state.projectProposals);
   const projectProposals = allProposals.proposals;
   //console.log(projectProposals);
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("profile"));
-
     if (user) dispatch(getProjectProposals(state.id));
   }, [dispatch]);
 
@@ -107,32 +102,21 @@ const ProjectProposals = (props) => {
                 padding: "20px",
               }}
             >
-              {projectProposals ? (
+              {projectProposals?.length > 0 ? (
                 <Box>
-                  {
-                    <Box>
-                      {projectProposals.length > 0 ? (
-                        <Box>
-                          {projectProposals.map((proposal, index) => (
-                            <LazyLoad key={index} height={50}>
-                              <ProjectProposal
-                                proposal={proposal}
-                                projectStatus={state.status}
-                              />
-                            </LazyLoad>
-                          ))}
-                        </Box>
-                      ) : (
-                        <Box>
-                          <Typography>No Proposals Found</Typography>
-                        </Box>
-                      )}
-                    </Box>
-                  }
+                  {projectProposals.map((proposal, index) => (
+                    <LazyLoad key={index} height={50}>
+                      {console.log(projectProposals)}
+                      <ProjectProposal
+                        proposal={proposal}
+                        projectStatus={state.status}
+                      />
+                    </LazyLoad>
+                  ))}
                 </Box>
               ) : (
-                <Box sx={{ padding: "10px 10px" }}>
-                  <LinearProgress />
+                <Box>
+                  <Typography>No Proposals Found</Typography>
                 </Box>
               )}
             </TabPanel>

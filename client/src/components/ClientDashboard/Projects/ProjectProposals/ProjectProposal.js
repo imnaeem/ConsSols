@@ -26,13 +26,10 @@ import {
 
 const ProjectProposal = ({ proposal, projectStatus }) => {
   const { message, rate, createdAt, status, _id } = proposal;
-  //console.log(proposal);
   const theme = useTheme();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const [proposalCompany, setProposalCompany] = useState(null);
-  //console.log(projectAccepted);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getProposalCompany(_id)).then((company) => {
@@ -46,10 +43,6 @@ const ProjectProposal = ({ proposal, projectStatus }) => {
     setAcceptDialog(false);
 
     navigate(0);
-  };
-
-  const viewCompany = () => {
-    navigate(`/company-profile/${proposalCompany.username}`);
   };
 
   const [acceptDialog, setAcceptDialog] = useState(false);
@@ -106,7 +99,6 @@ const ProjectProposal = ({ proposal, projectStatus }) => {
                   variant="text"
                   component="a"
                   href={`/company-profile/${proposalCompany.username}`}
-                  //onClick={viewCompany}
                   sx={{
                     padding: "0px",
                     fontSize: "20px",

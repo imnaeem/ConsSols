@@ -35,7 +35,7 @@ const UserAccount = ({ user }) => {
           <Button
             component={Link}
             to="/user/signup"
-            variant="outlined"
+            variant="contained"
             sx={{
               display: { xs: "none", md: "block" },
             }}

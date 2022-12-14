@@ -71,7 +71,7 @@ const Project = ({ project }) => {
   };
 
   return (
-    <Grow in timeout={600}>
+    <Box>
       {matches ? (
         <Paper
           variant="outlined"
@@ -352,7 +352,7 @@ const Project = ({ project }) => {
           </Dialog>
         </Paper>
       )}
-    </Grow>
+    </Box>
   );
 };
 

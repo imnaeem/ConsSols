@@ -2,7 +2,8 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 
 const API = axios.create({
-  baseURL: "https://conssols.herokuapp.com/api",
+  baseURL: "https://cons-sols-vercel.vercel.app/api/",
+  // baseURL: "http://localhost:5000/api/",
 });
 
 API.interceptors.request.use((req) => {

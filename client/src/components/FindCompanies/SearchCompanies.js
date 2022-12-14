@@ -1,10 +1,10 @@
-import { React } from "react";
-
+import { React, useState } from "react";
 import { Stack, Box, TextField } from "@mui/material";
 import LoadingButton from "@mui/lab/LoadingButton";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuItem from "@mui/material/MenuItem";
 import { useFormik, FastField, FormikProvider } from "formik";
+import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { useDispatch } from "react-redux";
 import {
   companyEmployees,
@@ -14,27 +14,44 @@ import { getSearchedCompanies } from "../../actions/companies";
 
 const SearchCompanies = () => {
   const dispatch = useDispatch();
+  const [reset, setReset] = useState(false);
+
   const formikbag = useFormik({
     initialValues: {
-      employees: "",
-      rate: "",
+      employees: "all",
+      rate: "all",
       featured: false,
     },
-
     onSubmit: (values, { setSubmitting }) => {
+      if (values.employees === "all") {
+        values = { ...values, employees: "" };
+      }
+      if (values.rate === "all") {
+        values = { ...values, rate: "" };
+      }
+
       setTimeout(() => {
-        dispatch(getSearchedCompanies(values))
-          .then((res) => {
-            if (res) {
-            } else {
-              resetForm();
-            }
-            setSubmitting(false);
-          })
-          .catch(() => {
-            setSubmitting(false);
+        if (reset) {
+          dispatch(
+            getSearchedCompanies({
+              employees: "",
+              rate: "",
+              featured: false,
+            })
+          ).then(() => {
+            resetForm();
+            setReset(() => false);
           });
-      }, 400);
+        } else {
+          dispatch(getSearchedCompanies(values))
+            .then((res) => {
+              setSubmitting(false);
+            })
+            .catch(() => {
+              setSubmitting(false);
+            });
+        }
+      }, 200);
     },
   });
   const {
@@ -43,6 +60,7 @@ const SearchCompanies = () => {
     handleChange,
     handleBlur,
     handleSubmit,
+    submitForm,
     resetForm,
   } = formikbag;
   return (
@@ -60,22 +78,22 @@ const SearchCompanies = () => {
                   xs: "column",
                   lg: "row",
                 }}
-                alignItems="center"
-                spacing={2}
-                sx={{
-                  display: {
-                    xs: "block",
-                    lg: "flex",
-                  },
+                alignItems={{
+                  xs: "stretch",
+                  lg: "center",
+                }}
+                spacing={{
+                  xs: 1,
+                  lg: 0,
                 }}
               >
                 <Stack
+                  flex={2.5}
                   direction={{
                     xs: "column",
                     lg: "row",
                   }}
                   spacing={2}
-                  flex={4}
                 >
                   <FastField
                     as={TextField}
@@ -89,8 +107,8 @@ const SearchCompanies = () => {
                     variant="outlined"
                     fullWidth
                   >
-                    <MenuItem value={true}>Featured</MenuItem>
                     <MenuItem value={false}>All</MenuItem>
+                    <MenuItem value={true}>Featured</MenuItem>
                   </FastField>
                   <FastField
                     as={TextField}
@@ -110,7 +128,6 @@ const SearchCompanies = () => {
                       </MenuItem>
                     ))}
                   </FastField>
-
                   <FastField
                     as={TextField}
                     select
@@ -130,11 +147,44 @@ const SearchCompanies = () => {
                     ))}
                   </FastField>
                 </Stack>
-                <Box flex={2}></Box>
-                <Box flex={1}>
+                <Box flex={1}></Box>
+
+                <Stack
+                  flex={1}
+                  direction={{
+                    xs: "column-reverse",
+                    lg: "row",
+                  }}
+                  spacing={1.5}
+                  justifyContent="flex-end"
+                >
                   <LoadingButton
-                    disabled={isSubmitting}
-                    loading={isSubmitting}
+                    disabled={
+                      reset ||
+                      JSON.stringify(values) ===
+                        JSON.stringify({
+                          employees: "all",
+                          rate: "all",
+                          featured: false,
+                        })
+                    }
+                    loading={reset}
+                    variant="outlined"
+                    size="large"
+                    endIcon={<RestartAltIcon />}
+                    loadingPosition="end"
+                    fullWidth
+                    onClick={() => {
+                      setReset(() => true);
+                      submitForm();
+                    }}
+                  >
+                    Reset
+                  </LoadingButton>
+
+                  <LoadingButton
+                    disabled={isSubmitting && !reset}
+                    loading={isSubmitting && !reset}
                     type="submit"
                     variant="contained"
                     size="large"
@@ -142,9 +192,9 @@ const SearchCompanies = () => {
                     loadingPosition="end"
                     fullWidth
                   >
-                    {isSubmitting ? "Searching" : "Search"}
+                    Search
                   </LoadingButton>
-                </Box>
+                </Stack>
               </Stack>
             </FormikProvider>
           </Box>

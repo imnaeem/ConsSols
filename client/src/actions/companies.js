@@ -35,7 +35,7 @@ export const currentCompanyReviews = (username) => async (dispatch) => {
 };
 
 export const getSearchedCompanies = (search) => async (dispatch) => {
-  // console.log("dd");
+  // console.log(search);
   try {
     const { data } = await api.getSearchedCompanies(search);
     //console.log(data);

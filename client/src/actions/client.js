@@ -36,7 +36,6 @@ export const closeClientProject = (id) => async (dispatch) => {
 export const getProjectProposals = (projectId) => async (dispatch) => {
   try {
     const { data } = await api.getProjectProposals(projectId);
-    //console.log(data);
     //return data;
     dispatch({ type: "GET_PROJECT_PROPOSALS", payload: data });
   } catch (error) {

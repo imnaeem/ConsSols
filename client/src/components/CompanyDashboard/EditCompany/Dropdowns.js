@@ -9,6 +9,10 @@ for (var i = 1980; i <= len; i++) {
 
 var companyEmployees = [
   {
+    value: "all",
+    label: "All",
+  },
+  {
     value: "0-10",
     label: "0-10",
   },
@@ -27,6 +31,10 @@ var companyEmployees = [
 ];
 
 var companyRate = [
+  {
+    value: "all",
+    label: "All",
+  },
   {
     value: "100-200 $",
     label: "100-200 $",
