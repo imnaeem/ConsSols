@@ -16,8 +16,8 @@ import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import { useFormik } from "formik";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useDispatch } from "react-redux";
 import { signup } from "../../actions/auth";
 import SendIcon from "@mui/icons-material/Send";

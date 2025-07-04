@@ -10,7 +10,7 @@ import {
   Pagination,
 } from "@mui/material";
 
-import { makeStyles } from "@mui/styles";
+
 
 import Contact from "../homepage/Contact";
 import LazyLoad from "react-lazyload";

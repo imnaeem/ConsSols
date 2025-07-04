@@ -1,27 +1,35 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
-
-import Companies from "../components/FindCompanies/Companies";
-import Company from "../components/Company/Company";
-import Homepage from "../components/homepage/Homepage";
-import SignIn from "../components/Auth/SignIn";
-import SignUp from "../components/Auth/SignUp";
-import ForgetPassword from "../components/Auth/ForgetPassword";
-import CompanyDashboard from "../components/CompanyDashboard/CompanyDashboard";
-import ClientDashboard from "../components/ClientDashboard/ClientDashboard";
-import FindProjects from "../components/FindProjects/FindProjects";
-
+import { CircularProgress, Box } from "@mui/material";
 import {
   ProtectedRoutes,
   AuthRoutes,
   CompaniesProjects,
 } from "./protectedRoutes";
-import AboutUs from "./../components/StaticPages/AboutUs";
-import ContactUs from "./../components/StaticPages/ContactUs";
-import Faqs from "./../components/StaticPages/Faqs";
-import PrivacyPolicy from "./../components/StaticPages/PrivacyPolicy";
-import AdminDashboard from "./../components/AdminDashboard/AdminDashboard";
-import PageNotFound from "./../components/PageNotFound";
+
+// Lazy load components for code splitting
+const Companies = lazy(() => import("../components/FindCompanies/Companies"));
+const Company = lazy(() => import("../components/Company/Company"));
+const Homepage = lazy(() => import("../components/homepage/Homepage"));
+const SignIn = lazy(() => import("../components/Auth/SignIn"));
+const SignUp = lazy(() => import("../components/Auth/SignUp"));
+const ForgetPassword = lazy(() => import("../components/Auth/ForgetPassword"));
+const CompanyDashboard = lazy(() => import("../components/CompanyDashboard/CompanyDashboard"));
+const ClientDashboard = lazy(() => import("../components/ClientDashboard/ClientDashboard"));
+const FindProjects = lazy(() => import("../components/FindProjects/FindProjects"));
+const AboutUs = lazy(() => import("../components/StaticPages/AboutUs"));
+const ContactUs = lazy(() => import("../components/StaticPages/ContactUs"));
+const Faqs = lazy(() => import("../components/StaticPages/Faqs"));
+const PrivacyPolicy = lazy(() => import("../components/StaticPages/PrivacyPolicy"));
+const AdminDashboard = lazy(() => import("../components/AdminDashboard/AdminDashboard"));
+const PageNotFound = lazy(() => import("../components/PageNotFound"));
+
+// Loading component for suspense
+const LoadingFallback = () => (
+  <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
+    <CircularProgress />
+  </Box>
+);
 
 const PageRoutes = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -31,7 +39,7 @@ const PageRoutes = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<LoadingFallback />}>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/company-profile/:id" element={<Company />} />
@@ -115,7 +123,7 @@ const PageRoutes = () => {
 
         <Route component={<PageNotFound />} />
       </Routes>
-    </>
+    </Suspense>
   );
 };
 
