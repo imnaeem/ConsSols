@@ -1,15 +1,22 @@
-const companiesReducer = (
-  companies = { companies: [], fetched: false },
-  action
-) => {
-  switch (action.type) {
-    case "FETCH_ALL_COMPANIES":
-      return { companies: action.payload, fetched: true };
-    case "SEARCHED_COMPANIES":
-      return { companies: action.payload, fetched: true };
-    default:
-      return companies;
-  }
-};
+import { createSlice } from '@reduxjs/toolkit';
 
-export default companiesReducer;
+const companiesSlice = createSlice({
+  name: 'companies',
+  initialState: {
+    companies: [],
+    fetched: false,
+  },
+  reducers: {
+    fetchAllCompanies: (state, action) => {
+      state.companies = action.payload;
+      state.fetched = true;
+    },
+    searchedCompanies: (state, action) => {
+      state.companies = action.payload;
+      state.fetched = true;
+    },
+  },
+});
+
+export const { fetchAllCompanies, searchedCompanies } = companiesSlice.actions;
+export default companiesSlice.reducer;

@@ -17,8 +17,8 @@ import {
 import styled from "@emotion/styled";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { signin } from "../../actions/auth";
 import { useDispatch } from "react-redux";
